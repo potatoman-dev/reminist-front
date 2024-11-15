@@ -3,4 +3,4 @@ export const GetHomeData = async () => {
   const res = await fetch(`${apiUrl}/api/v1`);
   const data = await res.json();
   return data;
-}
+};

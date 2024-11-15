@@ -1,0 +1,5 @@
+.vercel
+.next
+yarn.lock
+package.json
+.github
