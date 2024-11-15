@@ -1,5 +1,5 @@
 export const TestPost = async (name: string) => {
-    const res = await fetch('http://localhost:3000/api/v1/connectivity_tests', {
+    const res = await fetch('https://reminist-back.onrender.com/api/v1/connectivity_tests', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

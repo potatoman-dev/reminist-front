@@ -1,5 +1,5 @@
 export const TestDelete = async (id: string) => {
-    const res = await fetch(`http://localhost:3000/api/v1/connectivity_tests/${id}`, {
+    const res = await fetch(`https://reminist-back.onrender.com/api/v1/connectivity_tests/${id}`, {
         method: 'DELETE'
     });
     if (!res.ok) {

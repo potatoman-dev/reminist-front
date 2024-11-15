@@ -1,5 +1,5 @@
 export const TestEdit = async (id: string, name: string) => {
-    const res = await fetch(`http://localhost:3000/api/v1/connectivity_tests/${id}`, {
+    const res = await fetch(`https://reminist-back.onrender.com/api/v1/connectivity_tests/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
