@@ -1,5 +1,6 @@
 export const TestGetData = async () => {
-    const res = await fetch('https://reminist-back.onrender.com/api/v1/connectivity_tests');
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    const res = await fetch(`${apiUrl}/api/v1/connectivity_tests`);
     if (!res.ok) {
         throw new Error('Failed to fetch data');
     }

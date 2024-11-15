@@ -1,5 +1,6 @@
 export const TestEdit = async (id: string, name: string) => {
-    const res = await fetch(`https://reminist-back.onrender.com/api/v1/connectivity_tests/${id}`, {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    const res = await fetch(`${apiUrl}/api/v1/connectivity_tests/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

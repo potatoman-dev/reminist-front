@@ -25,8 +25,8 @@ export const TestDataList = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await TestPost(name)
-      const newTest = await response.json();
+      const newTest = await TestPost(name)
+
       setTests([...tests, newTest]);
       setName('');
     } catch (error) {

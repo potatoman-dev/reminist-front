@@ -1,5 +1,6 @@
 export const TestPost = async (name: string) => {
-    const res = await fetch('https://reminist-back.onrender.com/api/v1/connectivity_tests', {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const res = await fetch(`${apiUrl}/api/v1/connectivity_tests`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
