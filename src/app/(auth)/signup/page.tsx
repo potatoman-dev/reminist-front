@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
 import { signUp } from "@/lib/auth/api";
@@ -7,10 +8,12 @@ import { SignUpParams } from "@/lib/auth/types";
 
 const SignUpPage = () => {
   const { register, handleSubmit } = useForm<SignUpParams>();
+  const router = useRouter();
 
   const handleSignUp = async (data: SignUpParams) => {
     try {
       await signUp(data);
+      router.push("/signin");
     } catch (e) {
       console.log(e);
     }

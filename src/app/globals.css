@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -24,4 +24,19 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+} */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+
+  @apply text-text;
+}
+footer {
+  margin-top: auto;
 }

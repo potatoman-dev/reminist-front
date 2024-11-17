@@ -1,54 +1,22 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
-import { getCurrentUser, signOut } from "@/lib/auth/api";
-import { User } from "@/types/user";
+import { useAuth } from "@/hooks/useAuth";
 
 import { HomeSample } from "./_components/homeSample";
 
 export default function Home() {
-  const [loading, setLoading] = useState(true);
-  const [isSignedIn, setIsSignedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
-
-  const handleGetCurrentUser = async () => {
-    try {
-      const res = await getCurrentUser();
-
-      if (res?.data.isLogin === true) {
-        setIsSignedIn(true);
-        setCurrentUser(res?.data.data);
-      } else {
-        console.log("no current user");
-      }
-    } catch (e) {
-      console.log(e);
-    }
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    handleGetCurrentUser();
-  }, [setCurrentUser]);
-
-  const handleSignOut = async () => {
-    try {
-      await signOut();
-      setIsSignedIn(false);
-      setCurrentUser(null);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  const { loading, isSignedIn, currentUser, handleSignOut } = useAuth();
 
   return (
     <div className="">
       <HomeSample />
-      {!loading && isSignedIn && currentUser ? (
+      {loading ? (
+        <p>loading...</p>
+      ) : isSignedIn && currentUser ? (
         <div>
-          <h1>Hello, {currentUser.name} san.</h1>
-          <p>your email is: {currentUser.email}</p>
+          <h1>Hello, {currentUser?.name} san.</h1>
+          <p>your email is: {currentUser?.email}</p>
         </div>
       ) : (
         <div>
