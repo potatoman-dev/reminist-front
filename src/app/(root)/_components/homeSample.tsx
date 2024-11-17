@@ -19,14 +19,3 @@ export const HomeSample = () => {
     </div>
   );
 };
-
-
-
-
-
-
-
-
-
-
-
