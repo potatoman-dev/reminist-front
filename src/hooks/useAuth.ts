@@ -1,26 +1,27 @@
-import { useEffect, useState } from "react";
+import { useSetAtom } from "jotai";
+import { useEffect } from "react";
 
-import { getCurrentUser, signOut } from "@/lib/auth/api";
-import { User } from "@/types/user";
+import { loadingAtom } from "@/atoms/loadingAtom";
+import { userAtom } from "@/atoms/userAtom";
+import { getCurrentUser } from "@/lib/auth/api";
 
 export const useAuth = () => {
-  const [loading, setLoading] = useState(true);
-  const [isSignedIn, setIsSignedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const setUser = useSetAtom(userAtom);
+  const setLoading = useSetAtom(loadingAtom);
 
   const handleGetCurrentUser = async () => {
+    setLoading(true);
+
     try {
       const res = await getCurrentUser();
-      console.log("Current User Response:", res);
-
       if (res?.data.isLogin === true) {
-        setIsSignedIn(true);
-        setCurrentUser(res?.data.data);
+        setUser(res.data.data);
       } else {
         console.log("no current user");
       }
     } catch (e) {
       console.log(e);
+      setUser(null);
     } finally {
       setLoading(false);
     }
@@ -30,15 +31,5 @@ export const useAuth = () => {
     handleGetCurrentUser();
   }, []);
 
-  const handleSignOut = async () => {
-    try {
-      await signOut();
-      setIsSignedIn(false);
-      setCurrentUser(null);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  return { loading, isSignedIn, currentUser, handleSignOut, handleGetCurrentUser };
+  return { handleGetCurrentUser };
 };

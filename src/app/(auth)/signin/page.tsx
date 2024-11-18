@@ -1,17 +1,19 @@
 "use client";
 
+import { useSetAtom } from "jotai";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
+import { userAtom } from "@/atoms/userAtom";
 import { signIn } from "@/lib/auth/api";
 import { SignInParams } from "@/lib/auth/types";
-import { useAuth } from "@/hooks/useAuth";
 
 const SignInPage = () => {
   const { register, handleSubmit } = useForm<SignInParams>();
   const router = useRouter();
-  const { handleGetCurrentUser, isSignedIn } = useAuth();
+
+  const setUser = useSetAtom(userAtom);
 
   const handleSignIn = async (data: SignInParams) => {
     try {
@@ -21,8 +23,8 @@ const SignInPage = () => {
         Cookies.set("_access_token", res.headers["access-token"]);
         Cookies.set("_client", res.headers["client"]);
         Cookies.set("_uid", res.headers["uid"]);
-        await handleGetCurrentUser();
-          router.push("/home");
+        setUser(res.data.data);
+        router.push("/home");
       }
     } catch (e) {
       console.log(e);

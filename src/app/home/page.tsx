@@ -1,27 +1,25 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useAtomValue } from "jotai";
 import { useEffect } from "react";
 
+import { userAtom } from "@/atoms/userAtom";
 import { useAuth } from "@/hooks/useAuth";
 
+
 const HomePage = () => {
-  const { loading, isSignedIn} = useAuth();
-  const router = useRouter();
+  const { handleGetCurrentUser } = useAuth();
+  const user = useAtomValue(userAtom);
 
   useEffect(() => {
-    if (!loading) {
-      if (!isSignedIn) {
-        router.push("/signin");
-      }
-    }
-  }, [loading, isSignedIn]);
+    handleGetCurrentUser();
+  }, []);
 
-  if (loading) {
+  if (!user) {
     return <p>loading...</p>;
   }
 
-  return <div>{isSignedIn && <h1>Home Page</h1>}</div>;
+  return <div>{user && <h1>Home Page</h1>}</div>;
 };
 
 export default HomePage;

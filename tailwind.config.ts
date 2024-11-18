@@ -9,15 +9,16 @@ const config: Config = {
   theme: {
     colors: {
       primary: "#1475D0",
+      "primary-hover": "#2B82D4",
       "primary-variant": "#4387E7",
       secondary: "#A9A9A9",
       background: "#F7FAFE",
-      "background-secondary": "#F9F9F9",
+      "background-secondary": "#f7f7f7",
       surface: "#ffffff",
       text: "#282828",
       "text-secondary": "#686868",
       border: "#F0F0F0",
-      // 'on-primary': '#ffffff',
+      "on-primary": "#ffffff",
     },
     extend: {
       colors: {},

@@ -1,9 +1,10 @@
 import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
+import { Providers } from "@/components/Providers";
 
 import type { Metadata } from "next";
 
 import "./globals.css";
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: "Reminist",
@@ -17,10 +18,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`bg-background antialiased`}>
-        <Header />
-        {children}
-        <Footer />
+      <body className={`bg-background pt-16 antialiased`}>
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
