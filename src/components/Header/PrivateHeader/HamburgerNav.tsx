@@ -22,7 +22,7 @@ export const HamburgerNav = () => {
     <>
       <div
         onClick={handleClose}
-        className={`${isOpen ? "opacity-10" : "pointer-events-none opacity-0"} fixed left-0 top-0 z-10 h-full max-h-dvh w-full bg-background-tertiary  transition-opacity duration-200 ease-out`}
+        className={`${isOpen ? "opacity-10" : "pointer-events-none opacity-0"} fixed left-0 top-0 z-10 h-lvh w-full bg-background-tertiary  transition-opacity duration-200 ease-out`}
       ></div>
 
       <button onClick={handleOpen} className="ml-auto h-6 w-6 md:hidden">
@@ -30,7 +30,7 @@ export const HamburgerNav = () => {
       </button>
 
       <div
-        className={`${isOpen ? "translate-x-0" : "translate-x-full"} fixed right-0 top-0 z-20 h-screen w-2/3 max-w-80 bg-surface px-4 pb-6 pt-3 transition-transform duration-200 ease-out md:hidden`}
+        className={`${isOpen ? "translate-x-0" : "translate-x-full"} fixed right-0 top-0 z-20 h-full max-h-dvh w-2/3 max-w-80 bg-surface px-4 pb-6 pt-3 transition-transform duration-200 ease-out md:hidden`}
       >
         <div className="flex h-full flex-col">
           <button onClick={handleClose} className="ml-auto h-6 w-6">
