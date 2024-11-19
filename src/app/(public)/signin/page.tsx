@@ -52,11 +52,16 @@ const SignInPage = () => {
       >
         <div className="flex w-full flex-col gap-3">
           <FormInput label="メールアドレス">
-            <input type="email" {...register("email", { required: true })} />
+            <input
+              type="email"
+              placeholder="reminist@example.com"
+              {...register("email", { required: true })}
+            />
           </FormInput>
           <FormInput label="パスワード">
             <input
               type="password"
+              placeholder="********"
               {...register("password", { required: true })}
             />
           </FormInput>
