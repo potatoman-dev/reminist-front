@@ -1,5 +1,5 @@
 import { Footer } from "@/components/Footer";
-import { PublicHeader } from "@/components/Header/PublicHeader";
+import { PrivateHeader } from "@/components/Header/PrivateHeader";
 
 import type { Metadata } from "next";
 
@@ -17,7 +17,7 @@ export default function Layout({
 }>) {
   return (
     <>
-      <PublicHeader />
+      <PrivateHeader />
       {children}
       <Footer />
     </>
