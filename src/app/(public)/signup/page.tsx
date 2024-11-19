@@ -28,12 +28,14 @@ const SignUpPage = () => {
       if (axios.isAxiosError(e)) {
         setErrorMessage(
           e.response?.data.errors[0] ||
-            "エラーが発生しました、再度お試しください。"
+            "新規登録に失敗しました。\n入力内容を確認し、再度お試しください。"
         );
       } else if (e instanceof Error) {
         setErrorMessage(e.message);
       } else {
-        setErrorMessage("エラーが発生しました、再度お試しください。");
+        setErrorMessage(
+          "新規登録に失敗しました。\n入力内容を確認し、再度お試しください。"
+        );
       }
       setLoading(false);
     }
@@ -42,7 +44,14 @@ const SignUpPage = () => {
   return (
     <div className="px-4 pt-10 md:px-8 md:pt-16">
       <h1 className="mb-6 text-center text-xl md:text-2xl">新規登録</h1>
-      {errorMessage && <FormError errorMessage={errorMessage} />}
+      <p className="text-center text-sm text-secondary">
+        登録完了後、ログイン画面へ遷移します。
+      </p>
+      {errorMessage && (
+        <div className="mt-4 [&>*]:whitespace-pre-wrap">
+          <FormError errorMessage={errorMessage} />
+        </div>
+      )}
       <form
         className="mx-auto mt-6 flex w-96 max-w-full flex-col items-center px-3 md:mt-10 md:px-0"
         onSubmit={handleSubmit(handleSignUp)}
