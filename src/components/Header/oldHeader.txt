@@ -1,10 +1,6 @@
-"use client";
-
-import { useAtom, useAtomValue } from "jotai";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import {
   FiHome,
   FiList,
@@ -15,14 +11,7 @@ import {
   FiX,
 } from "react-icons/fi";
 
-import { loadingAtom } from "@/atoms/loadingAtom";
-import { userAtom } from "@/atoms/userAtom";
-import { useAuth } from "@/hooks/useAuth";
 import { signOut } from "@/lib/auth/api";
-import { getUserFromServerSideProps } from "@/lib/auth/auth";
-import { User } from "@/types/user";
-import { GetServerSidePropsContext } from "next";
-import { UserName } from "./_components/UserName";
 
 // TODO: update links
 const links = [
@@ -46,17 +35,7 @@ const links = [
 const  Header = () => {
   const route = useRouter();
   const pathname = usePathname();
-  // const { handleGetCurrentUser } = useAuth();
-  // const [user, setUser] = useAtom(userAtom);
-  // const loading = useAtomValue(loadingAtom);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
-  // useEffect(() => {
-  //   console.log(loading);
-
-  //   handleGetCurrentUser();
-  // }, []);
-
 
   const handleModalOpen = () => {
     setIsModalOpen(!isModalOpen);
@@ -69,7 +48,6 @@ const  Header = () => {
   const handleSignOut = async () => {
     try {
       await signOut();
-      // setUser(null);
       route.push("/signin");
     } catch (e) {
       console.log(e);
@@ -77,7 +55,6 @@ const  Header = () => {
   };
 
   const loggedInPath = ["/home", "/people", "/people/new"];
-
 
   return (
     <>

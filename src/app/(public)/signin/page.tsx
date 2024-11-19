@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
-import { userAtom } from "@/atoms/userAtom";
+// import { userAtom } from "@/atoms/userAtom";
 import { signIn } from "@/lib/auth/api";
 import { SignInParams } from "@/lib/auth/types";
 
@@ -13,19 +13,15 @@ const SignInPage = () => {
   const { register, handleSubmit } = useForm<SignInParams>();
   const router = useRouter();
 
-  const setUser = useSetAtom(userAtom);
+  // const setUser = useSetAtom(userAtom);
 
   const handleSignIn = async (data: SignInParams) => {
-    try {
-      const res = await signIn(data);
 
-      if (res.status === 200) {
-        Cookies.set("_access_token", res.headers["access-token"]);
-        Cookies.set("_client", res.headers["client"]);
-        Cookies.set("_uid", res.headers["uid"]);
-        setUser(res.data.data);
-        router.push("/home");
-      }
+    try {
+    await signIn(data);
+
+        // setUser(res.data.data);
+        // router.push("/home");
     } catch (e) {
       console.log(e);
     }

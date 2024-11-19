@@ -3,8 +3,8 @@ import { Providers } from "@/components/Providers";
 
 import type { Metadata } from "next";
 
-import "./globals.css";
-import Header from "@/components/Header";
+import "@/app/globals.css";
+import { ProtectedHeader } from "@/components/Header/ProtectedHeader";
 
 export const metadata: Metadata = {
   title: "Reminist",
@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="ja">
       <body className={`bg-background pt-16 antialiased`}>
         <Providers>
-          <Header />
+          <ProtectedHeader />
           {children}
           <Footer />
         </Providers>
