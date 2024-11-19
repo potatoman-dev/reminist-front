@@ -7,7 +7,7 @@ import { FiMenu, FiX } from "react-icons/fi";
 import { Links } from "./Links";
 import { Profile } from "./Profile";
 
-export const HamburgerNav = () => {
+export const HamburgerNav = (props: { name: string }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => {
@@ -37,7 +37,11 @@ export const HamburgerNav = () => {
             <FiX className="h-full w-full text-text-secondary" />
           </button>
 
-          <ul className="mt-10 flex flex-col gap-5 pl-5">
+          <div className="mt-10 min-w-20 cursor-pointer rounded-md bg-background-secondary p-2 text-center text-sm text-text-secondary">
+            <span className="inline-block max-w-40 truncate">{props.name}</span>
+          </div>
+
+          <ul className="mt-8 flex flex-col gap-5 pl-5">
             <Links />
           </ul>
           <div className="mt-5 flex flex-col gap-5 border-t-[1px] border-border pl-5 pt-5 [&>*]:flex [&>*]:items-center [&>*]:gap-1 [&>*]:rounded-md [&>*]:transition-colors">

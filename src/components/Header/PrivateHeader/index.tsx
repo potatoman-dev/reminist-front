@@ -17,7 +17,7 @@ export const PrivateHeader = async () => {
       <div className="ml-auto hidden md:block">
         <ProfileModal name={data.name} />
       </div>
-      <HamburgerNav />
+      <HamburgerNav name={data.name} />
     </header>
   );
 };
