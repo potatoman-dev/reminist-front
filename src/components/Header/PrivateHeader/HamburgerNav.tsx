@@ -20,12 +20,11 @@ export const HamburgerNav = () => {
 
   return (
     <>
-      {isOpen && (
-        <div
-          onClick={handleClose}
-          className="fixed left-0 top-0 z-10 h-screen w-full bg-background-tertiary opacity-10"
-        ></div>
-      )}
+      <div
+        onClick={handleClose}
+        className={`${isOpen ? "opacity-1" : "pointer-events-none opacity-0"} fixed left-0 top-0 z-10 h-dvh w-full bg-background-tertiary opacity-10 transition-opacity duration-200 ease-out`}
+      ></div>
+
       <button onClick={handleOpen} className="ml-auto h-6 w-6 md:hidden">
         <FiMenu className="h-full w-full text-text-secondary" />
       </button>
