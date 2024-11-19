@@ -7,6 +7,10 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      sans: ['var(--font-noto-sans-jp)'],
+      rounded: ['var(--font-m-plus-rounded-1c)'],
+    },
     colors: {
       primary: "#1475D0",
       "primary-hover": "#2B82D4",
