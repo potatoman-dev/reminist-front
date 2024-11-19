@@ -37,7 +37,7 @@ export const HamburgerNav = (props: { name: string }) => {
             <FiX className="h-full w-full text-text-secondary" />
           </button>
 
-          <div className="mt-10 min-w-20 cursor-pointer rounded-md bg-background-secondary p-2 text-center text-sm text-text-secondary">
+          <div className="mt-10 min-w-20 rounded-md bg-background-secondary p-2 text-center text-sm text-text-secondary">
             <span className="inline-block max-w-40 truncate">{props.name}</span>
           </div>
 
