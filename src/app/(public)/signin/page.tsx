@@ -1,10 +1,15 @@
 "use client";
 
 import axios from "axios";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
+import { FormError } from "@/components/Form/FormError";
+import { FormInput } from "@/components/Form/FormInput";
+import { FormLoading } from "@/components/Form/FormLoading";
+import { FormSubmitButton } from "@/components/Form/FormSubmitButton";
 import { signIn } from "@/lib/auth/api";
 import { SignInParams } from "@/lib/auth/types";
 
@@ -12,9 +17,11 @@ const SignInPage = () => {
   const { register, handleSubmit } = useForm<SignInParams>();
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const handleSignIn = async (data: SignInParams) => {
     try {
+      setLoading(true);
       await signIn(data);
 
       router.push("/home");
@@ -30,32 +37,46 @@ const SignInPage = () => {
       } else {
         setErrorMessage("エラーが発生しました、再度お試しください。");
       }
+      setLoading(false);
     }
   };
 
   return (
-    <div>
-      <h1>Signin Page</h1>
-      {errorMessage && <p>{errorMessage}</p>}
-      <form className="flex flex-col" onSubmit={handleSubmit(handleSignIn)}>
-        <label>
-          Email:
-          <input
-            className="text-black"
-            type="email"
-            {...register("email", { required: true })}
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            className="text-black"
-            type="password"
-            {...register("password", { required: true })}
-          />
-        </label>
-        <button type="submit">Sign In</button>
+    <div className="px-4 pt-10 md:px-8 md:pt-16">
+      <h1 className="mb-6 text-center text-xl md:text-2xl">ログイン</h1>
+      {errorMessage && <FormError errorMessage={errorMessage} />}
+
+      <form
+        className="mx-auto mt-6 flex w-96 max-w-full flex-col items-center px-3 md:mt-10 md:px-0"
+        onSubmit={handleSubmit(handleSignIn)}
+      >
+        <div className="flex w-full flex-col gap-3">
+          <FormInput label="メールアドレス">
+            <input type="email" {...register("email", { required: true })} />
+          </FormInput>
+          <FormInput label="パスワード">
+            <input
+              type="password"
+              {...register("password", { required: true })}
+            />
+          </FormInput>
+        </div>
+        <div className="mt-10">
+          {loading ? (
+            <FormLoading text="ログイン中" />
+          ) : (
+            <FormSubmitButton text="ログイン" />
+          )}
+        </div>
       </form>
+      <div className="mt-4 text-center">
+        <Link
+          className="text-sm text-secondary underline underline-offset-2 md:text-base"
+          href="/signup"
+        >
+          新規登録はこちら
+        </Link>
+      </div>
     </div>
   );
 };

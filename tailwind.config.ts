@@ -8,8 +8,8 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      sans: ['var(--font-noto-sans-jp)'],
-      rounded: ['var(--font-m-plus-rounded-1c)'],
+      sans: ["var(--font-noto-sans-jp)"],
+      rounded: ["var(--font-m-plus-rounded-1c)"],
     },
     colors: {
       primary: "#1475D0",
@@ -23,6 +23,7 @@ const config: Config = {
       surface: "#ffffff",
       text: "#282828",
       "text-secondary": "#686868",
+      "text-error": "#f35151",
       border: "#F0F0F0",
       "on-primary": "#ffffff",
       "on-background-tertiary": "#ffffff",
