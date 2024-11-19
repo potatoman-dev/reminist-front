@@ -22,7 +22,7 @@ export const HamburgerNav = () => {
     <>
       <div
         onClick={handleClose}
-        className={`${isOpen ? "opacity-1" : "pointer-events-none opacity-0"} fixed left-0 top-0 z-10 h-dvh w-full bg-background-tertiary opacity-10 transition-opacity duration-200 ease-out`}
+        className={`${isOpen ? "opacity-10" : "pointer-events-none opacity-0"} fixed left-0 top-0 z-10 h-full max-h-dvh w-full bg-background-tertiary  transition-opacity duration-200 ease-out`}
       ></div>
 
       <button onClick={handleOpen} className="ml-auto h-6 w-6 md:hidden">
