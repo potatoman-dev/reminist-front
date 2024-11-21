@@ -14,7 +14,11 @@ import { signIn } from "@/lib/auth/api";
 import { SignInParams } from "@/lib/auth/types";
 
 const SignInPage = () => {
-  const { register, handleSubmit } = useForm<SignInParams>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignInParams>();
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -44,29 +48,37 @@ const SignInPage = () => {
   return (
     <div className="px-4 pt-10 md:px-8 md:pt-16">
       <h1 className="mb-6 text-center text-xl md:text-2xl">ログイン</h1>
-      {errorMessage && <FormError errorMessage={errorMessage} />}
 
       <form
         className="mx-auto mt-6 flex w-96 max-w-full flex-col items-center px-3 md:mt-10 md:px-0"
         onSubmit={handleSubmit(handleSignIn)}
       >
         <div className="flex w-full flex-col gap-3">
-          <FormInput label="メールアドレス">
+          <FormInput label="メールアドレス" errors={errors.email}>
             <input
               type="email"
               placeholder="reminist@example.com"
-              {...register("email", { required: true })}
+              {...register("email", {
+                required: "メールアドレスを入力してください。",
+              })}
             />
           </FormInput>
-          <FormInput label="パスワード">
+          <FormInput label="パスワード" errors={errors.password}>
             <input
               type="password"
               placeholder="********"
-              {...register("password", { required: true })}
+              {...register("password", {
+                required: "パスワードを入力してください。",
+              })}
             />
           </FormInput>
         </div>
-        <div className="mt-10">
+        {errorMessage && (
+          <div className="mt-5">
+            <FormError errorMessage={errorMessage} />
+          </div>
+        )}
+        <div className="mt-5">
           {loading ? (
             <FormLoading text="ログイン中" />
           ) : (
