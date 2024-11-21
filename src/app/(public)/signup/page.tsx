@@ -14,7 +14,12 @@ import { signUp } from "@/lib/auth/api";
 import { SignUpParams } from "@/lib/auth/types";
 
 const SignUpPage = () => {
-  const { register, handleSubmit } = useForm<SignUpParams>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    getValues,
+  } = useForm<SignUpParams>();
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -47,46 +52,71 @@ const SignUpPage = () => {
       <p className="text-center text-sm text-secondary">
         登録完了後、ログイン画面へ遷移します。
       </p>
-      {errorMessage && (
-        <div className="mt-4 [&>*]:whitespace-pre-wrap">
-          <FormError errorMessage={errorMessage} />
-        </div>
-      )}
       <form
         className="mx-auto mt-6 flex w-96 max-w-full flex-col items-center px-3 md:mt-10 md:px-0"
         onSubmit={handleSubmit(handleSignUp)}
       >
         <div className="flex w-full flex-col gap-3">
-          <FormInput label="ニックネーム">
+          <FormInput label="ニックネーム" errors={errors.name}>
             <input
               type="text"
               placeholder="レミニスト"
-              {...register("name", { required: true })}
+              {...register("name", {
+                required: "ニックネームを入力してください。",
+              })}
             />
           </FormInput>
-          <FormInput label="メールアドレス">
+
+          <FormInput label="メールアドレス" errors={errors.email}>
             <input
               type="email"
               placeholder="reminist@example.com"
-              {...register("email", { required: true })}
+              {...register("email", {
+                required: "メールアドレスを入力してください。",
+              })}
             />
           </FormInput>
-          <FormInput label="パスワード">
+
+          <FormInput label="パスワード" errors={errors.password}>
             <input
               type="password"
-              placeholder="********"
-              {...register("password", { required: true })}
+              placeholder="********（8文字以上）"
+              {...register("password", {
+                required: "パスワードを入力してください。",
+                minLength: {
+                  value: 8,
+                  message: "パスワードは8文字以上で入力してください。",
+                },
+              })}
             />
           </FormInput>
-          <FormInput label="パスワード（確認）">
+
+          <FormInput
+            label="パスワード（確認）"
+            errors={errors.passwordConfirmation}
+          >
             <input
               type="password"
-              placeholder="********"
-              {...register("passwordConfirmation", { required: true })}
+              placeholder="********（8文字以上）"
+              {...register("passwordConfirmation", {
+                required: "パスワード（確認）を入力してください。",
+                minLength: {
+                  value: 8,
+                  message: "パスワード（確認）は8文字以上で入力してください。",
+                },
+                validate: (value) =>
+                  value === getValues("password") ||
+                  "パスワードが一致しません。",
+              })}
             />
           </FormInput>
         </div>
-        <div className="mt-10">
+        {errorMessage && (
+          <div className="mt-5 [&>*]:whitespace-pre-wrap">
+            <FormError errorMessage={errorMessage} />
+          </div>
+        )}
+        <div className="mt-5">
           {loading ? (
             <FormLoading text="新規登録中" />
           ) : (
