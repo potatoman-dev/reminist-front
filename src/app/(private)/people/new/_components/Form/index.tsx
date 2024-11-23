@@ -14,13 +14,13 @@ export const PeopleNewForm = () => {
   } = useForm<PersonType>({
     defaultValues: {
       name: "",
-      birthYear: null,
-      birthMonth: null,
-      birthDay: null,
-      gender: "",
-      relationship: "",
-      encounterStory: "",
-      imageUrl: "",
+      birthYear: undefined,
+      birthMonth: undefined,
+      birthDay: undefined,
+      gender: undefined,
+      relationship: undefined,
+      encounterStory: undefined,
+      imageUrl: undefined,
     },
   });
   const [loading, setLoading] = useState(false);
