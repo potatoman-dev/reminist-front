@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 
 import client from "@/lib/api/client";
 
-const getAuthTokens = () => {
+// TODO getAuthTokensを別ファイルへ移動
+export const getAuthTokens = () => {
   const cookieStore = cookies();
   const accessToken = cookieStore.get("access-token")?.value || "";
   const clientToken = cookieStore.get("client")?.value || "";
