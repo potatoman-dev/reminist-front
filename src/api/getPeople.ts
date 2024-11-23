@@ -1,27 +1,13 @@
-import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 
 import client from "@/lib/api/client";
+import { getAuthTokens } from "@/lib/auth/auth";
 
-// TODO getAuthTokensを別ファイルへ移動
-export const getAuthTokens = () => {
-  const cookieStore = cookies();
-  const accessToken = cookieStore.get("access-token")?.value || "";
-  const clientToken = cookieStore.get("client")?.value || "";
-  const uid = cookieStore.get("uid")?.value || "";
-
-  if (!accessToken || !clientToken || !uid) {
-    throw new Error("Missing authentication tokens");
-  }
-
-  return { accessToken, clientToken, uid };
-};
-
-export const getCurrentUser = async () => {
+export const getPeople = async () => {
   try {
     const { accessToken, clientToken, uid } = getAuthTokens();
 
-    const response = await client.get("auth/validate_token", {
+    const response = await client.get(`/people`, {
       headers: {
         "Cache-Control": "no-cache",
         "Content-Type": "application/json",
@@ -37,7 +23,7 @@ export const getCurrentUser = async () => {
       );
     }
 
-    const data = response.data.data;
+    const data = response.data;
     return data;
   } catch (error) {
     console.error(error);

@@ -15,6 +15,7 @@ const mPlusRounded1C = M_PLUS_Rounded_1c({
   subsets: ["latin"],
   variable: "--font-m-plus-rounded-1c",
   weight: ["100", "300", "400", "500", "700", "900"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -30,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body
-        className={`${notoSansJP.variable} ${mPlusRounded1C.variable} bg-background pt-16 font-sans antialiased`}
+        className={`${notoSansJP.variable} ${mPlusRounded1C.variable} bg-background pt-16 font-sans text-text antialiased`}
       >
         <Providers>{children}</Providers>
       </body>

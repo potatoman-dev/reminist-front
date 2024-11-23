@@ -26,6 +26,14 @@ body {
   }
 } */
 
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
 html,
 body {
   height: 100%;
@@ -35,9 +43,15 @@ body {
   display: flex;
   flex-direction: column;
   height: 200vh;
-
-  @apply text-text;
 }
 footer {
   margin-top: auto;
+}
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply text-text;
+  }
 }
