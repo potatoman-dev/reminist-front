@@ -31,9 +31,11 @@ export const PeopleNewForm = () => {
       // TODO refactor: person.data.person.idはどうにかしたい
       setLoading(true);
       const person = await createPerson(data);
-      console.log("submit:", person);
-      console.log("successfully created");
-      router.push(`/people/${person.data.person.id}`);
+      if (person) {
+        console.log("submit:", person);
+        console.log("successfully created");
+        router.push(`/people/${person.data.person.id}`);
+      }
     } catch (e) {
       console.log(e);
       setLoading(false);

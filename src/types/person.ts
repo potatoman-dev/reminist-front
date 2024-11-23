@@ -1,4 +1,5 @@
 export interface PersonType {
+  id?: number;
   name: string;
   birthYear: number | null;
   birthMonth: number | null;
