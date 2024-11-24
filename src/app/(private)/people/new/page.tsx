@@ -1,4 +1,3 @@
-
 import { PersonForm } from "@/features/person/components/PersonForm";
 import { getCurrentUser } from "@/features/user/api/getCurrentUser";
 

@@ -1,6 +1,7 @@
-import client from "@/libs/api/client";
-import { getAuthTokens } from "@/features/user/api/getAuthTokens";
 import { notFound } from "next/navigation";
+
+import { getAuthTokens } from "@/features/user/api/getAuthTokens";
+import client from "@/libs/api/client";
 
 export const getCurrentUser = async () => {
   try {

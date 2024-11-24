@@ -10,8 +10,8 @@ import { FormError } from "@/components/Form/FormError";
 import { FormInput } from "@/components/Form/FormInput";
 import { FormLoading } from "@/components/Form/FormLoading";
 import { FormSubmitButton } from "@/components/Form/FormSubmitButton";
-import { SignInParams } from "@/features/user/types";
 import { signIn } from "@/features/user/api/signIn";
+import { SignInParams } from "@/features/user/types";
 
 const SignInPage = () => {
   const {

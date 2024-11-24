@@ -1,8 +1,8 @@
 "use client";
 
-import { signOut } from "@/features/user/api/signOut";
 import { useRouter } from "next/navigation";
 
+import { signOut } from "@/features/user/api/signOut";
 
 export const SignOut = () => {
   const route = useRouter();
