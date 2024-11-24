@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
-import client from "@/lib/api/client";
-import { getAuthTokens } from "@/lib/auth/auth";
+import { getAuthTokens } from "@/features/user/api/getAuthTokens";
+import client from "@/libs/api/client";
 
 export const getPerson = async (id: string) => {
   try {

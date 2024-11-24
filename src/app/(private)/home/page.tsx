@@ -1,8 +1,4 @@
-// import { getCurrentUser } from '@/lib/auth/auth';
-
 const HomePage = async () => {
-  // const data = await getCurrentUser();
-  // console.log(data);
   const data = "";
 
   return (

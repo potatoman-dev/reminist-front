@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FiLogOut, FiUser } from "react-icons/fi";
 
-import { signOut } from "@/lib/auth/api";
+import { signOut } from "@/features/user/api/signOut";
 
 export const Profile = () => {
   const route = useRouter();

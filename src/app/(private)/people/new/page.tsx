@@ -1,13 +1,9 @@
-import { getCurrentUser } from "@/lib/auth/auth";
-
-import { PeopleNewForm } from "./_components/Form";
+import { PersonForm } from "@/features/person/components/PersonForm";
 
 const PersonNewPage = async () => {
-  await getCurrentUser();
-
   return (
     <section>
-      <PeopleNewForm />
+      <PersonForm />
     </section>
   );
 };

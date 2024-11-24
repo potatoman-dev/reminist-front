@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-import { signOut } from "@/lib/auth/api";
+import { signOut } from "@/features/user/api/signOut";
 
 export const SignOut = () => {
   const route = useRouter();
