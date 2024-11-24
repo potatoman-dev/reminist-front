@@ -10,8 +10,8 @@ import { FormError } from "@/components/Form/FormError";
 import { FormInput } from "@/components/Form/FormInput";
 import { FormLoading } from "@/components/Form/FormLoading";
 import { FormSubmitButton } from "@/components/Form/FormSubmitButton";
-import { signUp } from "@/lib/auth/api";
-import { SignUpParams } from "@/lib/auth/types";
+import { SignUpParams } from "@/features/user/types";
+import { signUp } from "@/features/user/api/signUp";
 
 const SignUpPage = () => {
   const {

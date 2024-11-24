@@ -1,9 +1,9 @@
 import { Logo } from "@/components/Header/Common/Logo";
-import { getCurrentUser } from "@/lib/auth/auth";
 
 import { HamburgerNav } from "./HamburgerNav";
 import { Links } from "./Links";
 import { ProfileModal } from "./ProfileModal";
+import { getCurrentUser } from "@/features/user/api/getCurrentUser";
 
 export const PrivateHeader = async () => {
   const data = await getCurrentUser();

@@ -3,10 +3,10 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { createPerson } from "@/api/createPerson";
-import { PersonType } from "@/types/person";
+import { createPerson } from "@/features/person/api/createPerson";
+import { PersonType } from "@/features/person/types";
 
-export const PeopleNewForm = () => {
+export const PersonForm = () => {
   const {
     register,
     handleSubmit,

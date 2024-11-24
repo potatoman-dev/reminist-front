@@ -1,13 +1,6 @@
 import Cookies from "js-cookie";
-
-import client from "@/lib/api/client";
-
-import { SignInParams, SignUpParams } from "./types";
-
-// サインアップ（新規アカウント作成）
-export const signUp = (params: SignUpParams) => {
-  return client.post("/auth", params);
-};
+import client from "@/libs/api/client";
+import { SignInParams } from "@/features/user/types";
 
 // サインイン（ログイン）
 export const signIn = async (params: SignInParams) => {
@@ -34,23 +27,5 @@ export const signIn = async (params: SignInParams) => {
       Cookies.remove("access-token");
       console.error(error);
       throw error;
-    });
-};
-
-// サインアウト（ログアウト）
-export const signOut = () => {
-  return client
-    .delete("/auth/sign_out", {
-      headers: {
-        "access-token": Cookies.get("access-token"),
-        client: Cookies.get("client"),
-        uid: Cookies.get("uid"),
-      },
-    })
-    .then((response) => {
-      Cookies.remove("access-token");
-      Cookies.remove("client");
-      Cookies.remove("uid");
-      return response;
     });
 };

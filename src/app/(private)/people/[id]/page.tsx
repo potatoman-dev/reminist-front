@@ -1,4 +1,4 @@
-import { getPerson } from "@/api/getPerson";
+import { getPerson } from "@/features/person/api/getPerson";
 
 const PersonPage = async ({ params }: { params: { id: string } }) => {
   const data = await getPerson(params.id);

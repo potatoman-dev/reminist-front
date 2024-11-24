@@ -1,13 +1,12 @@
+import client from "@/libs/api/client";
+import { getAuthTokens } from "@/features/user/api/getAuthTokens";
 import { notFound } from "next/navigation";
 
-import client from "@/lib/api/client";
-import { getAuthTokens } from "@/lib/auth/auth";
-
-export const getPeople = async () => {
+export const getCurrentUser = async () => {
   try {
     const { accessToken, clientToken, uid } = getAuthTokens();
 
-    const response = await client.get(`/people`, {
+    const response = await client.get("auth/validate_token", {
       headers: {
         "Cache-Control": "no-cache",
         "Content-Type": "application/json",
@@ -23,7 +22,7 @@ export const getPeople = async () => {
       );
     }
 
-    const data = response.data;
+    const data = response.data.data;
     return data;
   } catch (error) {
     console.error(error);

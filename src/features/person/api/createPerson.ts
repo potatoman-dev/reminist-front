@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 
-import client from "@/lib/api/client";
-import { PersonType } from "@/types/person";
+import client from "@/libs/api/client";
+import { PersonType } from "../types";
 
 export const createPerson = async (params: PersonType) => {
   try {

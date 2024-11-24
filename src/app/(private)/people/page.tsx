@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { getPeople } from "@/api/getPeople";
-import { PersonType } from "@/types/person";
+import { getPeople } from "@/features/person/api/getPeople";
+import { PersonType } from "@/features/person/types";
 
 const PeoplePage = async () => {
   const data = await getPeople();

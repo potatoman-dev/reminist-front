@@ -1,13 +1,13 @@
 import { notFound } from "next/navigation";
 
-import client from "@/lib/api/client";
-import { getAuthTokens } from "@/lib/auth/auth";
+import client from "@/libs/api/client";
+import { getAuthTokens } from "@/features/user/api/getAuthTokens";
 
-export const getPerson = async (id: string) => {
+export const getPeople = async () => {
   try {
     const { accessToken, clientToken, uid } = getAuthTokens();
 
-    const response = await client.get(`/people/${id}`, {
+    const response = await client.get(`/people`, {
       headers: {
         "Cache-Control": "no-cache",
         "Content-Type": "application/json",
