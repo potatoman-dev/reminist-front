@@ -1,12 +1,12 @@
 import { Logo } from "@/components/Header/Common/Logo";
-import { getCurrentUser } from "@/features/user/api/getCurrentUser";
+import { getCurrentUserName } from "@/features/user/api/getCurrentUserName";
 
 import { HamburgerNav } from "./HamburgerNav";
 import { Links } from "./Links";
 import { ProfileModal } from "./ProfileModal";
 
 export const PrivateHeader = async () => {
-  const data = await getCurrentUser();
+  const data = getCurrentUserName();
 
   return (
     <header className="fixed left-0 top-0 flex h-12 w-full items-center border-b-[1px] border-border bg-surface px-4 md:h-16 md:px-8">

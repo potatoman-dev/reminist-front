@@ -17,10 +17,10 @@ export const signIn = async (params: SignInParams) => {
       }
     )
     .then(function (response) {
-      console.log("signIn api");
       Cookies.set("uid", response.headers["uid"]);
       Cookies.set("client", response.headers["client"]);
       Cookies.set("access-token", response.headers["access-token"]);
+      Cookies.set("user-name", response.data.data.name);
     })
     .catch(function (error) {
       Cookies.remove("uid");

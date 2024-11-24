@@ -3,7 +3,6 @@ import Cookies from "js-cookie";
 import { PersonType } from "@/features/person/types";
 import client from "@/libs/api/client";
 
-
 export const createPerson = async (params: PersonType) => {
   try {
     return client.post("/people", params, {
