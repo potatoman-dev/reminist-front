@@ -7,7 +7,8 @@ export const getAuthTokens = () => {
   const uid = cookieStore.get("uid")?.value || "";
 
   if (!accessToken || !clientToken || !uid) {
-    throw new Error("Missing authentication tokens");
+    console.warn("Missing authentication tokens");
+    return { accessToken: "", clientToken: "", uid: "" };
   }
 
   return { accessToken, clientToken, uid };

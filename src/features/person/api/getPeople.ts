@@ -28,7 +28,6 @@ export const getPeople = async () => {
   } catch (error) {
     console.error(error);
     console.error("Error occurred while fetching current user:", error);
-
     notFound();
   }
 };
