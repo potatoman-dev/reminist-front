@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -7,6 +8,22 @@ import { createPerson } from "@/features/person/api/createPerson";
 import { PersonType } from "@/features/person/types";
 
 export const PersonForm = () => {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("default");
+
+  const imageList = [
+    "default",
+    "black",
+    "lightgreen",
+    "gray",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "lightblue",
+    "yellow",
+  ];
   const {
     register,
     handleSubmit,
@@ -20,17 +37,23 @@ export const PersonForm = () => {
       gender: undefined,
       relationship: undefined,
       encounterStory: undefined,
-      imageUrl: undefined,
+      imageUrl: "default",
     },
   });
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
+
+  const handleSelectImage = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    image: string
+  ) => {
+    e.preventDefault();
+    setSelectedImage(image);
+  };
 
   const onSubmit = async (data: PersonType) => {
     try {
       // TODO refactor: person.data.person.idはどうにかしたい
       setLoading(true);
-      const person = await createPerson(data);
+      const person = await createPerson({ ...data, imageUrl: selectedImage });
       if (person) {
         console.log("submit:", person);
         console.log("successfully created");
@@ -59,6 +82,23 @@ export const PersonForm = () => {
           {errors.name && (
             <div className="text-red-500 text-xs">{errors.name.message}</div>
           )}
+        </div>
+
+        <div className="flex flex-wrap gap-4">
+          {imageList.map((image) => (
+            <button
+              key={image}
+              onClick={(e) => handleSelectImage(e, image)}
+              className={`cursor-pointer rounded-lg border-2 bg-white px-5 py-4 ${image === selectedImage ? "border-primary-variant" : "border-white"}`}
+            >
+              <Image
+                src={`/image/people/${image}.png`}
+                alt="ヒトの画像"
+                width={50}
+                height={100}
+              />
+            </button>
+          ))}
         </div>
 
         <div className="mb-5 block">

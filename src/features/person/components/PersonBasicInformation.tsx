@@ -49,7 +49,7 @@ export const PersonBasicInformation = (props: { data: PersonType }) => {
         <div className="mb-4 flex justify-center md:w-1/5 md:shrink-0">
           <Image
             className="w-24 md:w-full"
-            src="/image/people/default.png"
+            src={`/image/people/${props.data.imageUrl === null || props.data.imageUrl === undefined ? "default" : props.data.imageUrl}.png`}
             alt="ヒトの画像"
             width="144"
             height="144"
