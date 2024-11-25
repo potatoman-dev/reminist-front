@@ -4,9 +4,9 @@ import { getAuthTokens } from "@/features/user/api/getAuthTokens";
 import client from "@/libs/api/client";
 
 export const getPerson = async (id: string) => {
-  try {
-    const { accessToken, clientToken, uid } = getAuthTokens();
+  const { accessToken, clientToken, uid } = getAuthTokens();
 
+  try {
     const response = await client.get(`/people/${id}`, {
       headers: {
         "Cache-Control": "no-cache",
