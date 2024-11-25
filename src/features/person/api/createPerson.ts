@@ -5,14 +5,18 @@ import client from "@/libs/api/client";
 
 export const createPerson = async (params: PersonType) => {
   try {
-    return client.post("/people", params, {
-      headers: {
-        "access-token": Cookies.get("access-token"),
-        client: Cookies.get("client"),
-        uid: Cookies.get("uid"),
-      },
-    });
-    // console.log(response.data.id)
+    console.log({ person: params });
+    return client.post(
+      "/people",
+      { person: params },
+      {
+        headers: {
+          "access-token": Cookies.get("access-token"),
+          client: Cookies.get("client"),
+          uid: Cookies.get("uid"),
+        },
+      }
+    );
     // redirect(`/people/${response.data.id}`);
   } catch (error) {
     console.error("Error occurred while fetching current user:", error);
