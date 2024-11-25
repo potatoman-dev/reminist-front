@@ -112,12 +112,20 @@ const SignUpPage = () => {
           </FormInput>
 
           <div className="flex flex-col items-center">
-            <label className="w-fit cursor-pointer">
+            <label className="w-fit cursor-pointer text-sm">
               <input
+                className="mr-2"
                 type="checkbox"
                 {...register("agreement", { required: "必須項目です。" })}
               />
-              <span className="ml-2 text-sm">利用規約に同意する</span>
+              <Link
+                className="text-primary underline"
+                href="/terms-of-use"
+                target="_blank"
+              >
+                利用規約
+              </Link>
+              <span>に同意する</span>
             </label>
             {errors.agreement && (
               <p className="my-1 text-xs text-text-error opacity-80">
