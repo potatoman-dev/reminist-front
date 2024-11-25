@@ -148,7 +148,7 @@ export const PersonForm = () => {
         {loading ? (
           <div className="flex w-48 items-center justify-center rounded-md bg-primary py-3 pr-5 text-on-primary">
             <svg
-              className="text-white -ml-1 mr-3 h-5 w-5 animate-spin"
+              className="-ml-1 mr-3 h-5 w-5 animate-spin text-white"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
