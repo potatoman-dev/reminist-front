@@ -46,7 +46,7 @@ const SignInPage = () => {
   };
 
   return (
-    <div className="px-4 pt-10 md:px-8 md:pt-16">
+    <section className="px-4 pt-10 md:px-8 md:pt-16">
       <h1 className="mb-6 text-center text-xl md:text-2xl">ログイン</h1>
 
       <form
@@ -94,7 +94,7 @@ const SignInPage = () => {
           新規登録はこちら
         </Link>
       </div>
-    </div>
+    </section>
   );
 };
 
