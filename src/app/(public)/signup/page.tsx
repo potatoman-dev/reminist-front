@@ -110,18 +110,30 @@ const SignUpPage = () => {
               })}
             />
           </FormInput>
+
+          <div className="flex flex-col items-center">
+            <label className="w-fit cursor-pointer">
+              <input
+                type="checkbox"
+                {...register("agreement", { required: "必須項目です。" })}
+              />
+              <span className="ml-2 text-sm">利用規約に同意する</span>
+            </label>
+            {errors.agreement && (
+              <p className="my-1 text-xs text-text-error opacity-80">
+                {errors.agreement.message}
+              </p>
+            )}
+          </div>
         </div>
         {errorMessage && (
           <div className="mt-5 [&>*]:whitespace-pre-wrap">
             <FormError errorMessage={errorMessage} />
           </div>
         )}
-        <div className="mt-5">
-          {loading ? (
-            <FormLoading text="新規登録中" />
-          ) : (
-            <FormSubmitButton text="新規登録" />
-          )}
+        <div className="mt-7">
+          {loading && <FormLoading text="新規登録中" />}
+          {!loading && <FormSubmitButton text="新規登録" />}
         </div>
       </form>
       <div className="mt-4 text-center">
