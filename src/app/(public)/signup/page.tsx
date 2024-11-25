@@ -49,7 +49,7 @@ const SignUpPage = () => {
   return (
     <section className="px-4 pt-10 md:px-8 md:pt-16">
       <h1 className="mb-6 text-center text-xl md:text-2xl">新規登録</h1>
-      <p className="text-center text-sm text-secondary">
+      <p className="text-center text-sm text-text-gray-light">
         登録完了後、ログイン画面へ遷移します。
       </p>
       <form
@@ -146,7 +146,7 @@ const SignUpPage = () => {
       </form>
       <div className="mt-4 text-center">
         <Link
-          className="text-sm text-secondary underline underline-offset-2 md:text-base"
+          className="text-sm text-text-gray-light underline underline-offset-2 md:text-base"
           href="/signin"
         >
           すでに登録済みの方はこちら

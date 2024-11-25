@@ -2,9 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FiHome, FiList, FiPlusCircle } from "react-icons/fi";
+import { FiHome, FiUser } from "react-icons/fi";
 
-// TODO: update links
 const links = [
   {
     href: "/home",
@@ -14,16 +13,11 @@ const links = [
   {
     href: "/people",
     label: "ヒトの一覧",
-    icon: <FiList />,
-  },
-  {
-    href: "/people/new",
-    label: "ヒトの新規追加",
-    icon: <FiPlusCircle />,
+    icon: <FiUser />,
   },
 ];
 
-export const Links = () => {
+export const Links = (props: { handleClose?: () => void }) => {
   const pathname = usePathname();
 
   return (
@@ -32,13 +26,11 @@ export const Links = () => {
         <li key={link.href}>
           <Link
             href={link.href}
+            onClick={props.handleClose ? props.handleClose : undefined}
             className={`flex items-center gap-1 ${pathname === link.href ? "relative text-primary" : ""}`}
           >
             {link.icon}
             <p>{link.label}</p>
-            {pathname === link.href && (
-              <div className="absolute -left-3 bottom-1/2 h-1 w-1 translate-y-1/2 rounded-full bg-primary-variant md:-bottom-1 md:left-1/2" />
-            )}
           </Link>
         </li>
       ))}

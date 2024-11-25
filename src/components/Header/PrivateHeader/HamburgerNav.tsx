@@ -22,32 +22,32 @@ export const HamburgerNav = (props: { name: string }) => {
     <>
       <div
         onClick={handleClose}
-        className={`${isOpen ? "opacity-10" : "pointer-events-none opacity-0"} fixed left-0 top-0 z-10 h-lvh w-full bg-background-tertiary transition-opacity duration-200 ease-out`}
+        className={`${isOpen ? "opacity-10" : "pointer-events-none opacity-0"} fixed left-0 top-0 z-10 h-lvh w-full bg-background-black transition-opacity duration-200 ease-out`}
       ></div>
 
-      <button onClick={handleOpen} className="ml-auto h-6 w-6 md:hidden">
-        <FiMenu className="h-full w-full text-text-secondary" />
+      <button onClick={handleOpen} className="h-6 w-6 md:hidden">
+        <FiMenu className="h-full w-full text-text-gray-dark" />
       </button>
 
       <div
-        className={`${isOpen ? "translate-x-0" : "translate-x-full"} fixed right-0 top-0 z-20 h-full max-h-dvh w-2/3 max-w-80 bg-surface px-4 pb-6 pt-3 transition-transform duration-200 ease-out md:hidden`}
+        className={`${isOpen ? "translate-x-0" : "translate-x-full"} fixed right-0 top-0 z-20 h-full max-h-dvh w-2/3 max-w-80 bg-white px-4 pb-6 pt-3 transition-transform duration-200 ease-out md:hidden`}
       >
         <div className="flex h-full flex-col">
           <button onClick={handleClose} className="ml-auto h-6 w-6">
-            <FiX className="h-full w-full text-text-secondary" />
+            <FiX className="h-full w-full text-text-gray-dark" />
           </button>
 
-          <div className="mt-10 min-w-20 rounded-md bg-background-secondary p-2 text-center text-sm text-text-secondary">
+          <div className="mt-10 min-w-20 rounded-md bg-background-gray-light p-2 text-center text-sm text-text-gray-dark">
             <span className="inline-block max-w-40 truncate">{props.name}</span>
           </div>
 
           <ul className="mt-8 flex flex-col gap-5 pl-5">
-            <Links />
+            <Links handleClose={handleClose} />
           </ul>
-          <div className="mt-5 flex flex-col gap-5 border-t-[1px] border-border pl-5 pt-5 [&>*]:flex [&>*]:items-center [&>*]:gap-1 [&>*]:rounded-md [&>*]:transition-colors">
-            <Profile />
+          <div className="mt-5 flex flex-col gap-5 border-t-[1px] border-background-gray-dark pl-5 pt-5 [&>*]:flex [&>*]:items-center [&>*]:gap-1 [&>*]:rounded-md [&>*]:transition-colors">
+            <Profile handleClose={handleClose} />
           </div>
-          <div className="mt-auto flex flex-col items-end gap-2 [&_a]:w-fit [&_a]:text-sm [&_a]:text-secondary">
+          <div className="mt-auto flex flex-col items-end gap-2 [&_a]:w-fit [&_a]:text-sm [&_a]:text-text-gray-light">
             <Link href="/terms-of-use">利用規約</Link>
             <Link href="/privacy-policy">プライバシーポリシー</Link>
           </div>

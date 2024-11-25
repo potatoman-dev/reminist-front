@@ -43,12 +43,12 @@ export const PersonForm = () => {
   };
 
   return (
-    <div className="mx-auto mt-16 w-3/4 max-w-3xl rounded-md bg-surface p-6 shadow-sm">
+    <div className="mx-auto mt-16 w-3/4 max-w-3xl rounded-md bg-background-gray-normal p-6 shadow-sm">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-5 block">
           <label>
             <input
-              className="w-full border-b-2 border-surface px-1 pb-1 text-2xl font-medium placeholder:opacity-50 focus:border-border focus:outline-none focus:placeholder:opacity-30"
+              className="w-full border-b-2 border-background-gray-dark px-1 pb-1 text-2xl font-medium placeholder:text-background-gray-dark focus:outline-none"
               type="text"
               autoComplete="off"
               autoFocus={true}
@@ -63,7 +63,7 @@ export const PersonForm = () => {
 
         <div className="mb-5 block">
           <label>
-            <span className="block pb-1 text-sm font-medium text-text-secondary">
+            <span className="block pb-1 text-sm font-medium text-text-gray-dark">
               性別
             </span>
             <select {...register("gender")}>
@@ -80,7 +80,7 @@ export const PersonForm = () => {
 
         <div className="mb-5 block">
           <label>
-            <span className="block pb-1 text-sm font-medium text-text-secondary">
+            <span className="block pb-1 text-sm font-medium text-text-gray-dark">
               関係性
             </span>
             <select {...register("relationship")}>
@@ -104,11 +104,11 @@ export const PersonForm = () => {
             <label className="" htmlFor="birthYear">
               誕生日
             </label>
-            <p className="text-xs text-text-secondary">??歳</p>
+            <p className="text-xs text-text-gray-dark">??歳</p>
           </div>
           <input
             id="birthYear"
-            className="w-[4em] rounded-md border border-border p-1 placeholder:opacity-50 focus:placeholder:opacity-30"
+            className="w-[4em] rounded-md border border-background-gray-dark p-1 placeholder:text-background-gray-dark"
             type="number"
             autoComplete="off"
             {...register("birthYear")}
@@ -118,7 +118,7 @@ export const PersonForm = () => {
           />
           <span className="mr-4 inline-block">年</span>
           <input
-            className="w-[3em] rounded-md border border-border p-1 placeholder:opacity-50 focus:placeholder:opacity-30"
+            className="w-[3em] rounded-md border border-background-gray-dark p-1 placeholder:text-background-gray-dark"
             type="number"
             autoComplete="off"
             {...register("birthMonth")}
@@ -126,7 +126,7 @@ export const PersonForm = () => {
           />
           <span className="mr-4 inline-block">月</span>
           <input
-            className="w-[3em] rounded-md border border-border p-1 placeholder:opacity-50 focus:placeholder:opacity-30"
+            className="w-[3em] rounded-md border border-background-gray-dark p-1 placeholder:text-background-gray-dark"
             type="number"
             autoComplete="off"
             {...register("birthDay")}
@@ -136,17 +136,17 @@ export const PersonForm = () => {
         </div>
 
         <label>
-          <span className="block pb-1 text-sm font-medium text-text-secondary">
+          <span className="block pb-1 text-sm font-medium text-text-gray-dark">
             出会った経緯
           </span>
           <textarea
-            className="w-full rounded-md border border-solid border-border p-2"
+            className="w-full rounded-md border border-solid border-background-gray-dark p-2"
             rows={3}
             {...register("encounterStory")}
           />
         </label>
         {loading ? (
-          <div className="flex w-48 items-center justify-center rounded-md bg-primary py-3 pr-5 text-on-primary">
+          <div className="flex w-48 items-center justify-center rounded-md bg-primary py-3 pr-5 text-white">
             <svg
               className="-ml-1 mr-3 h-5 w-5 animate-spin text-white"
               xmlns="http://www.w3.org/2000/svg"
@@ -171,7 +171,7 @@ export const PersonForm = () => {
           </div>
         ) : (
           <button
-            className="w-48 rounded-md bg-primary py-3 text-on-primary"
+            className="w-48 rounded-md bg-primary py-3 text-white"
             type="submit"
           >
             作成

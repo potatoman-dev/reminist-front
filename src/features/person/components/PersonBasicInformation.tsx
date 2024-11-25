@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { PersonType } from "@/features/person/types";
 
-export const PersonBasicInfomation = (props: { data: PersonType }) => {
+export const PersonBasicInformation = (props: { data: PersonType }) => {
   const today = new Date();
   let age;
   let happyBirthday = false;
@@ -41,7 +41,7 @@ export const PersonBasicInfomation = (props: { data: PersonType }) => {
 
   return (
     <>
-      <p className="mb-6 text-right text-xs text-secondary">
+      <p className="mb-6 text-right text-xs text-text-gray-light">
         作成日：{props.data.createdAt}
       </p>
       <div className="items-start gap-14 md:flex">
@@ -56,13 +56,15 @@ export const PersonBasicInfomation = (props: { data: PersonType }) => {
           />
         </div>
         <div className="w-full">
-          <h1 className="mb-6 px-2 text-center text-xl font-medium text-text-secondary md:mb-8 md:text-left md:text-2xl">
+          <h1 className="mb-6 px-2 text-center text-xl font-medium text-text-dark-blue md:mb-8 md:text-left md:text-2xl">
             {props.data.name}
           </h1>
-          <div className="rounded-md bg-surface p-6 shadow-sm md:p-8">
+          <div className="rounded-md bg-background-gray-normal p-6 shadow-sm md:p-8">
             <div className="mb-3 md:flex md:gap-10">
               <div className="mb-3 flex items-center gap-4 md:mb-0">
-                <h3 className="text-sm font-semibold text-secondary">性別</h3>
+                <h3 className="text-sm font-semibold text-text-gray-light">
+                  性別
+                </h3>
                 <p className="text-sm md:text-base">
                   {props.data.gender ? (
                     props.data.gender
@@ -72,7 +74,9 @@ export const PersonBasicInfomation = (props: { data: PersonType }) => {
                 </p>
               </div>
               <div className="flex items-center gap-4">
-                <h3 className="text-sm font-semibold text-secondary">関係性</h3>
+                <h3 className="text-sm font-semibold text-text-gray-light">
+                  関係性
+                </h3>
                 <p className="text-sm md:text-base">
                   {props.data.relationship ? (
                     props.data.relationship
@@ -83,7 +87,9 @@ export const PersonBasicInfomation = (props: { data: PersonType }) => {
               </div>
             </div>
             <div className="mb-3 flex items-center gap-4">
-              <h3 className="text-sm font-semibold text-secondary">誕生日</h3>
+              <h3 className="text-sm font-semibold text-text-gray-light">
+                誕生日
+              </h3>
               <p className="text-sm md:text-base">
                 {props.data.birthYear ? props.data.birthYear : "----"}
                 <span className="mr-1 text-xs">年</span>
@@ -94,13 +100,13 @@ export const PersonBasicInfomation = (props: { data: PersonType }) => {
                 {happyBirthday && <span className="ml-1">🎉</span>}
               </p>
               {age !== undefined && (
-                <p className="rounded border border-secondary px-1 text-xs text-text-secondary opacity-80">
+                <p className="rounded-full border border-text-gray-light px-1.5 text-xs text-text-gray-light">
                   {age}歳
                 </p>
               )}
             </div>
-            <div className="mb-1 mt-5 gap-4 border-t border-dashed border-border pt-4">
-              <h3 className="mb-1 text-sm font-semibold text-secondary">
+            <div className="mb-1 mt-5 gap-4 border-t border-dashed border-background-gray-dark pt-4">
+              <h3 className="mb-1 text-sm font-semibold text-text-gray-light">
                 出会った経緯
               </h3>
               <p className="text-sm md:text-base">

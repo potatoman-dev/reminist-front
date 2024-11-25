@@ -18,7 +18,7 @@ export const ProfileModal = (props: { name: string }) => {
     <>
       <button
         onClick={handleModalOpen}
-        className="min-w-20 cursor-pointer rounded-md bg-background-secondary p-2 text-center text-sm text-text-secondary"
+        className="min-w-20 cursor-pointer rounded-md border p-2 text-center text-sm text-text-gray-dark transition-colors hover:bg-background-gray-light"
       >
         <span className="inline-block truncate md:max-w-32 lg:max-w-48">
           {props.name}
@@ -26,8 +26,8 @@ export const ProfileModal = (props: { name: string }) => {
       </button>
       {isModalOpen ? (
         <>
-          <div className="-bottom-22 absolute right-10 z-20 rounded-md border-[1px] border-border bg-surface px-2 py-2 shadow-sm [&>*]:flex [&>*]:items-center [&>*]:gap-2 [&>*]:rounded-md [&>*]:px-8 [&>*]:py-1.5 [&>*]:transition-colors">
-            <Profile />
+          <div className="-bottom-22 absolute right-24 z-20 rounded-md border-[1px] border-background-gray-dark bg-white px-2 py-2 shadow-sm [&>*]:flex [&>*]:items-center [&>*]:gap-2 [&>*]:rounded-md [&>*]:px-8 [&>*]:py-1.5 [&>*]:transition-colors">
+            <Profile handleModalClose={handleModalClose} />
           </div>
           <div
             onClick={handleModalClose}
