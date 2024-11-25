@@ -3,7 +3,7 @@ const MyPage = async () => {
     <section>
       <h1>My Page</h1>
     </section>
-  )
-}
+  );
+};
 
 export default MyPage;

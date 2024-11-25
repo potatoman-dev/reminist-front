@@ -5,6 +5,6 @@ const PrivacyPolicyPage = () => {
       <p>This is the privacy policy</p>
     </div>
   );
-}
+};
 
 export default PrivacyPolicyPage;
