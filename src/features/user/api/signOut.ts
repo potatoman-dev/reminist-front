@@ -16,6 +16,7 @@ export const signOut = () => {
       Cookies.remove("access-token");
       Cookies.remove("client");
       Cookies.remove("uid");
+      Cookies.remove("user-name");
       return response;
     });
 };
