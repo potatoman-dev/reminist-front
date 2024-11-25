@@ -109,7 +109,7 @@ export const PersonBasicInformation = (props: { data: PersonType }) => {
               <h3 className="mb-1 text-sm font-semibold text-text-gray-light">
                 出会った経緯
               </h3>
-              <p className="text-sm md:text-base">
+              <p className="whitespace-pre-line text-sm md:text-base">
                 {props.data.encounterStory ? (
                   props.data.encounterStory
                 ) : (
