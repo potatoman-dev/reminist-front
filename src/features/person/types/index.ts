@@ -1,4 +1,5 @@
 export interface PersonType {
+  createdAt?: string;
   id?: number;
   name: string;
   birthYear: number | undefined;

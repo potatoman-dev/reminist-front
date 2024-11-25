@@ -27,6 +27,7 @@ const config: Config = {
       border: "#F0F0F0",
       "on-primary": "#ffffff",
       "on-background-tertiary": "#ffffff",
+      white: "#ffffff",
     },
     extend: {
       colors: {},
