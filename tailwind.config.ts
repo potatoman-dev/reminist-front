@@ -10,7 +10,6 @@ const config: Config = {
   theme: {
     fontFamily: {
       sans: ["var(--font-noto-sans-jp)"],
-      rounded: ["var(--font-m-plus-rounded-1c)"],
     },
     colors: {
       primary: "#1475D0",
