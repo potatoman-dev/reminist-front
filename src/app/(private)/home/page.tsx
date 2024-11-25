@@ -1,4 +1,8 @@
+import { getCurrentUser } from "@/features/user/api/getCurrentUser";
+
 const HomePage = async () => {
+  await getCurrentUser();
+
   const data = "";
 
   return (

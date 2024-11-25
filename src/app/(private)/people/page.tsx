@@ -2,8 +2,11 @@ import Link from "next/link";
 
 import { getPeople } from "@/features/person/api/getPeople";
 import { PersonType } from "@/features/person/types";
+import { getCurrentUser } from "@/features/user/api/getCurrentUser";
 
 const PeoplePage = async () => {
+  await getCurrentUser();
+
   const data = await getPeople();
   console.log(data);
 
