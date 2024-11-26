@@ -58,3 +58,10 @@ footer {
     @apply text-text;
   }
 }
+
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  background: url("/image/chevron-down.svg") no-repeat right 8px center / 18px
+    auto;
+}
