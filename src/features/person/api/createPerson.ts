@@ -17,7 +17,6 @@ export const createPerson = async (params: PersonType) => {
         },
       }
     );
-    // redirect(`/people/${response.data.id}`);
   } catch (error) {
     console.error("Error occurred while fetching current user:", error);
   }
