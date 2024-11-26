@@ -5,7 +5,6 @@ import client from "@/libs/api/client";
 
 export const createPerson = async (params: PersonType) => {
   try {
-    console.log({ person: params });
     return client.post(
       "/people",
       { person: params },

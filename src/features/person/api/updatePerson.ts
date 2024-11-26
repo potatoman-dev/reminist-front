@@ -5,7 +5,6 @@ import client from "@/libs/api/client";
 
 export const updatePerson = async (id: string, params: PersonType) => {
   try {
-    console.log({ person: params });
     return client.put(
       `/people/${id}`,
       { person: params },
