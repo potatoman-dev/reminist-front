@@ -12,7 +12,7 @@ export const PrivateHeader = async () => {
   const data = getCurrentUserName();
 
   return (
-    <header className="fixed left-0 top-0 h-12 w-full bg-background px-2 md:h-16 md:px-20">
+    <header className="fixed left-0 top-0 h-12 w-full bg-background px-2 md:h-16 md:px-6 lg:px-20">
       <div className="flex h-full w-full items-center border-b border-background-gray-dark px-2 md:px-4">
         <Logo />
         <ul className="ml-14 hidden gap-5 md:flex">
