@@ -2,16 +2,27 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FiMoreHorizontal } from "react-icons/fi";
 
+import { deletePerson } from "@/features/person/api/deletePerson";
 import { PersonType } from "@/features/person/types";
 
+
 export const PersonCard = (props: { person: PersonType }) => {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleDelete = async () => {
+    if (props.person.id) {
+      await deletePerson(props.person.id);
+      router.refresh();
+    }
   };
 
   return (
@@ -31,7 +42,10 @@ export const PersonCard = (props: { person: PersonType }) => {
             編集
           </Link>
           {/* TODO 削除機能 */}
-          <button className="rounded-md px-6 py-1 hover:bg-background-gray-light">
+          <button
+            onClick={handleDelete}
+            className="rounded-md px-6 py-1 hover:bg-background-gray-light"
+          >
             削除
           </button>
         </div>
@@ -42,6 +56,7 @@ export const PersonCard = (props: { person: PersonType }) => {
       >
         <div className="flex justify-center">
           <Image
+            className="h-auto w-auto"
             src={`/image/people/${props.person.imageUrl}.png`}
             alt={props.person.name}
             width={80}
