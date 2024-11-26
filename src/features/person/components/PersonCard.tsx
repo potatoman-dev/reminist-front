@@ -9,7 +9,6 @@ import { FiMoreHorizontal } from "react-icons/fi";
 import { deletePerson } from "@/features/person/api/deletePerson";
 import { PersonType } from "@/features/person/types";
 
-
 export const PersonCard = (props: { person: PersonType }) => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
