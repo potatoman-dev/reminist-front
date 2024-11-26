@@ -3,11 +3,11 @@ import Cookies from "js-cookie";
 import { PersonType } from "@/features/person/types";
 import client from "@/libs/api/client";
 
-export const createPerson = async (params: PersonType) => {
+export const updatePerson = async (id: string, params: PersonType) => {
   try {
     console.log({ person: params });
-    return client.post(
-      "/people",
+    return client.put(
+      `/people/${id}`,
       { person: params },
       {
         headers: {

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { PersonType } from "@/features/person/types";
 
@@ -41,11 +42,18 @@ export const PersonBasicInformation = (props: { data: PersonType }) => {
 
   return (
     <>
-      <p className="mb-6 text-right text-xs text-text-gray-light">
+      <p className="mb-3 text-right text-xs text-text-gray-light md:mb-6">
         作成日：{props.data.createdAt}
       </p>
+      <div className="flex">
+        <Link
+          href={`/people/${props.data.id}/edit`}
+          className="border-text-gray-normal mb-4 ml-auto border bg-background-gray-dark px-3 text-sm text-text-gray-dark md:hidden"
+        >
+          編集
+        </Link>
+      </div>
       <div className="items-start gap-14 md:flex">
-        {/* TODO 画像を取得するように変更 */}
         <div className="mb-4 flex justify-center md:w-1/5 md:shrink-0">
           <Image
             className="w-24 md:w-full"
@@ -56,9 +64,17 @@ export const PersonBasicInformation = (props: { data: PersonType }) => {
           />
         </div>
         <div className="w-full">
-          <h1 className="mb-6 px-2 text-center text-xl font-medium text-text-dark-blue md:mb-8 md:text-left md:text-2xl">
-            {props.data.name}
-          </h1>
+          <div className="mb-6 flex flex-row items-start justify-between gap-2 px-2 md:mb-8">
+            <h1 className="w-full text-center text-xl font-medium text-text-dark-blue md:text-left md:text-2xl">
+              {props.data.name}
+            </h1>
+            <Link
+              href={`/people/${props.data.id}/edit`}
+              className="border-text-gray-normal ml-auto hidden shrink-0 border bg-background-gray-dark px-3 text-sm text-text-gray-dark md:block"
+            >
+              編集
+            </Link>
+          </div>
           <div className="rounded-md bg-background-gray-normal p-6 shadow-sm md:p-8">
             <div className="mb-3 md:flex md:gap-10">
               <div className="mb-3 flex items-center gap-4 md:mb-0">
