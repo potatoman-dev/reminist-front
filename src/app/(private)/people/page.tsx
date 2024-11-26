@@ -8,7 +8,6 @@ const PeoplePage = async () => {
   await getCurrentUser();
 
   const data = await getPeople();
-  console.log(data);
 
   return (
     <div>
