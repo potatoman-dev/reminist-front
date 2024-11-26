@@ -7,7 +7,6 @@ import { FiMoreHorizontal } from "react-icons/fi";
 
 import { PersonType } from "@/features/person/types";
 
-
 export const PersonCard = (props: { person: PersonType }) => {
   const [isOpen, setIsOpen] = useState(false);
 
