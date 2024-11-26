@@ -1,11 +1,8 @@
 import { getPeople } from "@/features/person/api/getPeople";
 import { PersonCard } from "@/features/person/components/PersonCard";
 import { PersonType } from "@/features/person/types";
-import { getCurrentUser } from "@/features/user/api/getCurrentUser";
 
 const PeoplePage = async () => {
-  await getCurrentUser();
-
   const data = await getPeople();
 
   return (
