@@ -1,5 +1,4 @@
 import Cookies from "js-cookie";
-import { notFound } from "next/navigation";
 
 import client from "@/libs/api/client";
 
@@ -21,8 +20,7 @@ export const deletePerson = async (id: number) => {
 
     return response;
   } catch (error) {
-    console.error(error);
     console.error("Error occurred while deleting person:", error);
-    notFound();
+    throw error;
   }
 };
