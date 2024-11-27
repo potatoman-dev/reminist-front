@@ -8,7 +8,6 @@ import { PersonCard } from "@/features/person/components/PersonCard";
 import { PersonType } from "@/features/person/types";
 import { getAuthTokensClient } from "@/features/user/api/getAuthTokensClient";
 
-
 export const PeopleList = (props: { people: PersonType[] }) => {
   const [people, setPeople] = useState<PersonType[]>(props.people);
   const [error, setError] = useState<string | null>(null);
