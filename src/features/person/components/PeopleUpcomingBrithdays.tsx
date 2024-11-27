@@ -24,7 +24,9 @@ export const PeopleUpcomingBrithdays = (props: {
         setPeople(data.people);
       } catch (error) {
         console.error("Error fetching upcoming birthdays:", error);
-        setError("近日誕生日の取得中にエラーが発生しました");
+        setError(
+          "近日誕生日の取得中にエラーが発生しました\nリロードしてください"
+        );
       }
     };
 
