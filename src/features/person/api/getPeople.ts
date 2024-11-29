@@ -8,6 +8,7 @@ export const getPeople = async (
   try {
     const response = await client.get(`/people`, {
       headers: {
+        "Cache-Control": "no-cache",
         "Content-Type": "application/json",
         "access-token": accessToken,
         client: clientToken,

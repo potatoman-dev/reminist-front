@@ -8,6 +8,7 @@ export const getUpcomingBirthdays = async (
   try {
     const response = await client.get(`/people?filter=upcoming_birthdays`, {
       headers: {
+        "Cache-Control": "no-cache",
         "Content-Type": "application/json",
         "access-token": accessToken,
         client: clientToken,
