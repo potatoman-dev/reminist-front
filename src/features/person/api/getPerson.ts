@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
 
-import { getAuthTokens } from "@/features/user/api/getAuthTokens";
+import { getAuthTokensServer } from "@/features/user/api/getAuthTokensServer";
 import client from "@/libs/api/client";
 
 export const getPerson = async (id: string, locale: string = "ja") => {
-  const { accessToken, clientToken, uid } = getAuthTokens();
+  const { accessToken, clientToken, uid } = getAuthTokensServer();
 
   try {
     const response = await client.get(`/people/${id}?locale=${locale}`, {
