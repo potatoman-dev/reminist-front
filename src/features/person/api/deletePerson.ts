@@ -1,17 +1,17 @@
-import Cookies from "js-cookie";
-import { notFound } from "next/navigation";
-
+import { getAuthTokensClient } from "@/features/user/api/getAuthTokensClient";
 import client from "@/libs/api/client";
 
 export const deletePerson = async (id: number) => {
+  const { accessToken, clientToken, uid } = getAuthTokensClient();
+
   try {
     const response = await client.delete(`/people/${id}`, {
       headers: {
         "Cache-Control": "no-cache",
         "Content-Type": "application/json",
-        "access-token": Cookies.get("access-token"),
-        client: Cookies.get("client"),
-        uid: Cookies.get("uid"),
+        "access-token": accessToken,
+        client: clientToken,
+        uid: uid,
       },
     });
 
@@ -21,8 +21,7 @@ export const deletePerson = async (id: number) => {
 
     return response;
   } catch (error) {
-    console.error(error);
     console.error("Error occurred while deleting person:", error);
-    notFound();
+    throw error;
   }
 };

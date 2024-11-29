@@ -1,10 +1,11 @@
+"use client";
+
 import Link from "next/link";
 
 import { PersonType } from "@/features/person/types";
 
 export const PeopleUpcomingBrithdays = (props: { people: PersonType[] }) => {
   const today = new Date();
-  console.log(today.getMonth() + 1, today.getDate());
 
   return (
     <div className="flex justify-center">
@@ -12,13 +13,10 @@ export const PeopleUpcomingBrithdays = (props: { people: PersonType[] }) => {
         <h2 className="mb-2 w-fit rounded-lg bg-primary-variant px-3 py-0.5 text-sm font-bold text-white">
           近日誕生日のヒトビト
         </h2>
-        {props.people.length > 0 ? (
-          <ul className="flex flex-col gap-1">
-            {props.people.map((person) => (
-              <li
-                key={person.id}
-                className="text-sm font-medium text-text-gray-dark"
-              >
+        <ul className="flex flex-col gap-1">
+          {props.people.length > 0 ? (
+            props.people.map((person) => (
+              <li key={person.id} className="text-sm text-text-gray-dark">
                 <Link
                   href={`/people/${person.id}`}
                   className="flex items-center gap-1 hover:text-primary"
@@ -33,13 +31,13 @@ export const PeopleUpcomingBrithdays = (props: { people: PersonType[] }) => {
                     )}
                 </Link>
               </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="text-sm text-text-gray-dark">
-            近日誕生日のヒトはいません
-          </p>
-        )}
+            ))
+          ) : (
+            <p className="text-sm text-text-gray-dark">
+              近日誕生日のヒトはいません
+            </p>
+          )}
+        </ul>
       </div>
     </div>
   );

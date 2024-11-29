@@ -1,10 +1,11 @@
 import { notFound } from "next/navigation";
 
-import { getAuthTokens } from "@/features/user/api/getAuthTokens";
 import client from "@/libs/api/client";
 
+import { getAuthTokensServer } from "./getAuthTokensServer";
+
 export const getCurrentUser = async () => {
-  const { accessToken, clientToken, uid } = getAuthTokens();
+  const { accessToken, clientToken, uid } = getAuthTokensServer();
 
   try {
     const response = await client.get("auth/validate_token", {

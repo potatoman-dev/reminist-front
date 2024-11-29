@@ -1,21 +1,25 @@
-import Cookies from "js-cookie";
-
 import { PersonType } from "@/features/person/types";
+import { getAuthTokensClient } from "@/features/user/api/getAuthTokensClient";
 import client from "@/libs/api/client";
+import refetchForServer from "@/libs/api/refetchForServer";
 
 export const createPerson = async (params: PersonType) => {
+  const { accessToken, clientToken, uid } = getAuthTokensClient();
+
   try {
-    return client.post(
+    const person = client.post(
       "/people",
       { person: params },
       {
         headers: {
-          "access-token": Cookies.get("access-token"),
-          client: Cookies.get("client"),
-          uid: Cookies.get("uid"),
+          "access-token": accessToken,
+          client: clientToken,
+          uid: uid,
         },
       }
     );
+    refetchForServer("/people");
+    return person;
   } catch (error) {
     console.error("Error occurred while fetching current user:", error);
   }

@@ -1,21 +1,26 @@
+import { notFound } from "next/navigation";
+
 import { getPeople } from "@/features/person/api/getPeople";
-import { PersonCard } from "@/features/person/components/PersonCard";
-import { PersonType } from "@/features/person/types";
+import { PeopleList } from "@/features/person/components/PeopleList";
+import { getAuthTokensServer } from "@/features/user/api/getAuthTokensServer";
 
 const PeoplePage = async () => {
-  const data = await getPeople();
+  const { accessToken, clientToken, uid } = getAuthTokensServer();
+  try {
+    const data = await getPeople(accessToken, clientToken, uid);
+    const people = data.people;
 
-  return (
-    <section>
-      <div className="mt-6 max-w-6xl px-6 md:mx-auto md:mt-16 lg:w-3/4">
-        <ul className="grid gap-x-6 gap-y-6 sm:grid-cols-2 sm:gap-y-10 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          {data.people.map((person: PersonType) => (
-            <PersonCard key={person.id} person={person} />
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
+    return (
+      <section>
+        <div className="mt-6 max-w-6xl px-6 md:mx-auto md:mt-16 lg:w-3/4">
+          <PeopleList people={people} />
+        </div>
+      </section>
+    );
+  } catch (error) {
+    console.error("Error fetching people:", error);
+    notFound();
+  }
 };
 
 export default PeoplePage;
