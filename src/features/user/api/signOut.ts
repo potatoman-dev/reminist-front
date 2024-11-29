@@ -2,14 +2,18 @@ import Cookies from "js-cookie";
 
 import client from "@/libs/api/client";
 
+import { getAuthTokensClient } from "./getAuthTokensClient";
+
 // サインアウト（ログアウト）
-export const signOut = () => {
+export const signOut = async () => {
+  const { accessToken, clientToken, uid } = getAuthTokensClient();
+
   return client
     .delete("/auth/sign_out", {
       headers: {
-        "access-token": Cookies.get("access-token"),
-        client: Cookies.get("client"),
-        uid: Cookies.get("uid"),
+        "access-token": accessToken,
+        client: clientToken,
+        uid: uid,
       },
     })
     .then((response) => {
