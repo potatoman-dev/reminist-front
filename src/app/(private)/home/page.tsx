@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 
 import { getUpcomingBirthdays } from "@/features/person/api/getUpcomingBirthdays";
 import { PeopleUpcomingBrithdays } from "@/features/person/components/PeopleUpcomingBrithdays";
@@ -17,9 +16,7 @@ const HomePage = async () => {
     return (
       <section>
         <div className="mt-6 max-w-3xl px-6 md:mx-auto md:mt-16 lg:w-3/4">
-          <Suspense fallback={<p>loading...</p>}>
-            <PeopleUpcomingBrithdays initialPeople={people} />
-          </Suspense>
+          <PeopleUpcomingBrithdays people={people} />
         </div>
       </section>
     );
