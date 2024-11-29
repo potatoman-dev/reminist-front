@@ -2,10 +2,11 @@ import Cookies from "js-cookie";
 
 import { PersonType } from "@/features/person/types";
 import client from "@/libs/api/client";
+import refetchForServer from "@/libs/api/refetchForServer";
 
 export const createPerson = async (params: PersonType) => {
   try {
-    return client.post(
+    const person = client.post(
       "/people",
       { person: params },
       {
@@ -16,6 +17,8 @@ export const createPerson = async (params: PersonType) => {
         },
       }
     );
+    refetchForServer("/people");
+    return person;
   } catch (error) {
     console.error("Error occurred while fetching current user:", error);
   }
