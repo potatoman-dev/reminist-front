@@ -7,9 +7,11 @@ import { getPeople } from "@/features/person/api/getPeople";
 import { PersonCard } from "@/features/person/components/PersonCard";
 import { PersonType } from "@/features/person/types";
 import { getAuthTokensClient } from "@/features/user/api/getAuthTokensClient";
+import refetchForServer from "@/libs/api/refetchForServer";
 
 export const PeopleList = (props: { people: PersonType[] }) => {
   const [people, setPeople] = useState<PersonType[]>(props.people);
+
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -29,8 +31,10 @@ export const PeopleList = (props: { people: PersonType[] }) => {
   const handleDelete = async (id: number) => {
     if (id) {
       await deletePerson(id);
-      const newPeople = people.filter((person) => person.id !== id);
-      setPeople(newPeople);
+      setPeople((prevPeople) =>
+        prevPeople.filter((person) => person.id !== id)
+      );
+      refetchForServer("/people");
     }
   };
 
