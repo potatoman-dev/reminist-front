@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FiChevronLeft } from "react-icons/fi";
 
 import { PersonType } from "@/features/person/types";
 
@@ -42,9 +43,18 @@ export const PersonBasicInformation = (props: { data: PersonType }) => {
 
   return (
     <>
-      <p className="mb-3 text-right text-xs text-text-gray-light md:mb-6">
-        作成日：{props.data.createdAt}
-      </p>
+      <div className="mb-4 flex items-center justify-between md:mb-10">
+        <Link
+          className="flex w-fit items-center gap-2 text-xs text-text-gray-light md:text-sm"
+          href="/people"
+        >
+          <FiChevronLeft />
+          ヒトの一覧
+        </Link>
+        <p className="text-right text-xs text-text-gray-light">
+          作成日：{props.data.createdAt}
+        </p>
+      </div>
       <div className="flex">
         <Link
           href={`/people/${props.data.id}/edit`}

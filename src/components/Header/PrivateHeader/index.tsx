@@ -8,7 +8,7 @@ import { HamburgerNav } from "./HamburgerNav";
 import { Links } from "./Links";
 import { ProfileModal } from "./ProfileModal";
 
-export const PrivateHeader = async () => {
+export const PrivateHeader = () => {
   const data = getCurrentUserName();
 
   return (
