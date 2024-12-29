@@ -59,15 +59,6 @@ export const ConversationFeed = () => {
             </li>
           );
         })}
-        <li className="mb-6 rounded-lg border border-background-gray-dark bg-white p-6 pb-7 text-text-dark-blue">
-          <p className="mb-4 text-sm font-medium text-text-gray-dark">
-            2024/12/12
-          </p>
-          <p className="whitespace-pre-line border-t border-background-gray-dark pt-4">
-            テキストが入ります
-          </p>
-          <p className="mt-2 text-right text-primary">bob</p>
-        </li>
       </ul>
     </div>
   );
