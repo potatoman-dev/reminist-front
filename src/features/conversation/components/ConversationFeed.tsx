@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { getFeed } from "@/features/conversation/api/getFeed";
 import { getAuthTokensClient } from "@/features/user/api/getAuthTokensClient";
 
-
 interface FeedType {
   id: number;
   personId: number;
