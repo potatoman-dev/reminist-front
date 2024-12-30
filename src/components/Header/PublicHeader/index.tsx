@@ -4,13 +4,13 @@ import { HeaderButton } from "./HeaderButton";
 
 export const PublicHeader = () => {
   return (
-    <header className="fixed left-0 top-0 flex h-12 w-full items-center justify-between border-b border-border-white px-4 md:h-16 md:px-8">
+    <header className="fixed left-0 top-0 flex h-12 w-full items-center justify-between border-b border-border-white bg-white px-4 md:h-16 md:px-8">
       <Logo />
       <div className="flex gap-3">
         <HeaderButton
           href="/signin"
           text="ログイン"
-          class="bg-background-gray-normal hover:bg-background-gray-normal-hover"
+          class="border border-border-white"
         />
         <HeaderButton
           href="/signup"
