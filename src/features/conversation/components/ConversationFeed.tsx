@@ -32,25 +32,19 @@ export const ConversationFeed = () => {
 
   return (
     <div>
-      <h2 className="mb-6 text-center text-lg font-medium text-text-gray-dark">
-        最近の会話
-      </h2>
+      <h2 className="mb-3 pl-5 text-lg font-bold">最近の会話</h2>
       <ul className="flex flex-col gap-4">
         {feed.map((item) => {
           return (
             <li
               key={item.id}
-              className="mb-6 rounded-lg border border-background-gray-dark bg-white p-6 pb-7 text-text-dark-blue"
+              className="rounded-3xl border border-border-white bg-white px-5 py-6 shadow shadow-shadow"
             >
-              <p className="mb-4 text-sm font-medium text-text-gray-dark">
-                {item.date}
-              </p>
-              <p className="whitespace-pre-line border-t border-background-gray-dark pt-4">
-                {item.body}
-              </p>
+              <p className="mb-2.5 font-bold">{item.date}</p>
+              <p className="whitespace-pre-line">{item.body}</p>
               <div className="flex justify-end">
                 <Link
-                  className="mt-2 text-right text-primary"
+                  className="mt-2.5 text-primary"
                   href={`/people/${item.personId}`}
                 >
                   {item.personName}

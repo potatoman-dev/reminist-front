@@ -6,9 +6,7 @@ const EditPersonPage = async ({ params }: { params: { id: string } }) => {
 
   return (
     <section>
-      <div className="mt-6 max-w-3xl px-6 md:mx-auto md:mt-16 lg:w-3/4">
-        <PersonEdit id={params.id} data={data.person} />
-      </div>
+      <PersonEdit id={params.id} data={data.person} />
     </section>
   );
 };

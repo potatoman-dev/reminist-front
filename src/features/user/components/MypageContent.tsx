@@ -2,45 +2,74 @@
 
 import { useState } from "react";
 
-import { Popup } from "@/features/user/components/Popup";
+import { updateUserName } from "@/features/user/api/updateUserName";
 import { UserInfo } from "@/features/user/types";
+import refetchForServer from "@/libs/api/refetchForServer";
 
 export const MypageContent = (props: { data: UserInfo }) => {
-  const [showPopup, setShowPopup] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [name, setName] = useState(props.data.name);
 
   const toggleEditName = () => {
-    setShowPopup(true);
+    setIsEditing(!isEditing);
   };
 
-  const closePopup = () => {
-    setShowPopup(false);
+  const updateName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
+
+  const submit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    try {
+      await updateUserName({ name });
+      refetchForServer("/mypage");
+      setIsEditing(false);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
     <>
-      {showPopup && <Popup data={props.data} closePopup={closePopup} />}
-      <div className="mt-6 max-w-6xl px-6 md:mx-auto md:mt-16 lg:w-1/2">
-        <h1 className="mb-10 text-center text-xl">マイページ</h1>
-        <dl className="flex flex-col gap-6 rounded-lg bg-background-gray-normal p-6 [&>div]:border-b [&>div]:pb-4 [&_dt]:mb-1 [&_dt]:text-sm [&_dt]:font-medium [&_dt]:text-text-gray-dark">
+      <div className="rounded-3xl border border-border-white bg-white px-16 py-11 shadow shadow-shadow">
+        <dl className="">
           <div>
             <div className="flex justify-between">
-              <dt>名前</dt>
+              <dt className="font-bold text-primary">名前</dt>
               <button
                 type="button"
-                className="bg-background-gray-dark px-2 py-1 text-xs text-text-gray-dark"
+                className="rounded-full bg-primary px-3 py-1 text-sm text-white"
                 onClick={toggleEditName}
               >
                 編集
               </button>
             </div>
-            <dd>{props.data.name}</dd>
+            {isEditing ? (
+              <form className="flex items-center gap-4">
+                <input
+                  className="rounded-xl border border-border-input p-2"
+                  onChange={updateName}
+                  value={name}
+                />
+                <button
+                  type="submit"
+                  className="rounded-xl bg-primary px-6 py-2 text-white"
+                  onClick={submit}
+                >
+                  更新
+                </button>
+              </form>
+            ) : (
+              <dd>{props.data.name}</dd>
+            )}
           </div>
           <div>
-            <dt>メールアドレス</dt>
+            <dt className="mt-6 font-bold text-primary">メールアドレス</dt>
             <dd>{props.data.email}</dd>
           </div>
           <div>
-            <dt>パスワード</dt>
+            <dt className="mt-6 font-bold text-primary">パスワード</dt>
             <dd>********</dd>
           </div>
         </dl>

@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { ConversationFeed } from "@/features/conversation/components/ConversationFeed";
 import { getUpcomingBirthdays } from "@/features/person/api/getUpcomingBirthdays";
 import { PeopleUpcomingBrithdays } from "@/features/person/components/PeopleUpcomingBrithdays";
-import { SearchField } from "@/features/search/components/SearchField";
 import { getAuthTokensServer } from "@/features/user/api/getAuthTokensServer";
 import { getCurrentUser } from "@/features/user/api/getCurrentUser";
 
@@ -17,10 +16,12 @@ const HomePage = async () => {
 
     return (
       <section>
-        <SearchField />
-        <div className="mt-6 max-w-3xl px-6 md:mx-auto md:mt-16 lg:w-3/4">
-          <PeopleUpcomingBrithdays people={people} />
-          <div className="mt-10">
+        <div className="">
+          <h1 className="mb-9 text-3xl font-bold">ホーム</h1>
+          <div className="mb-11">
+            <PeopleUpcomingBrithdays people={people} />
+          </div>
+          <div className="">
             <ConversationFeed />
           </div>
         </div>

@@ -98,76 +98,60 @@ export const ConversationsList = (props: {
 
   return (
     <>
-      <div className="mb-8">
+      <div className="mb-3 flex items-baseline">
+        <h2 className="pl-5 text-2xl font-bold">会話</h2>
         <button
-          className="w-full rounded-lg border-2 border-dashed border-background-gray-dark py-8 text-lg text-text-gray-light"
+          className="ml-auto mr-5 rounded-full bg-primary px-10 py-3 text-white"
           onClick={openConversationModal}
         >
-          会話を追加する
+          会話を追加
         </button>
       </div>
       {isCreateFormOpen && (
-        <>
-          <div
-            onClick={closeConversationModal}
-            className="fixed left-0 top-0 z-10 h-full w-full bg-background-black opacity-30"
-          ></div>
-          <ConversationAddForm
-            personId={props.personId}
-            closeConversationModal={closeConversationModal}
-          />
-        </>
+        <ConversationAddForm
+          personId={props.personId}
+          closeConversationModal={closeConversationModal}
+        />
       )}
       {conversations.length === 0 ? (
         <p className="pt-10 text-center font-medium text-text-gray-dark">
           まだ会話はありません
         </p>
       ) : (
-        <ul>
+        <ul className="flex flex-col gap-2.5">
           {conversations.map((conversation) => (
-            <li
-              key={conversation.id}
-              className="mb-6 rounded-lg border border-background-gray-dark bg-white p-6 pb-7 text-text-dark-blue"
-            >
-              <div className="mb-4 flex justify-between text-sm">
-                <p className="font-medium text-text-gray-dark">
-                  {conversation.date}
-                </p>
-                <div className="flex gap-6 text-text-gray-light">
-                  <button
-                    className="transition-colors hover:text-text-gray-dark"
-                    onClick={() => openEditConversationModal(conversation.id)}
-                  >
-                    編集
-                  </button>
-                  <button
-                    className="transition-colors hover:text-text-gray-dark"
-                    onClick={() => handleDeleteConversation(conversation.id)}
-                  >
-                    削除
-                  </button>
+            <li key={conversation.id}>
+              {isEditFormOpen && editingConversation?.id === conversation.id ? (
+                <>
+                  <ConversationEditForm
+                    personId={props.personId}
+                    closeConversationModal={closeEditConversationModal}
+                    editingConversation={editingConversation}
+                  />
+                </>
+              ) : (
+                <div className="rounded-3xl border border-border-white bg-white px-5 py-6 shadow shadow-shadow">
+                  <p className="mb-2.5 font-bold">{conversation.date}</p>
+                  <p className="whitespace-pre-line">{conversation.body}</p>
+                  <div className="mt-2.5 flex justify-end gap-4">
+                    <button
+                      className="text-primary"
+                      onClick={() => openEditConversationModal(conversation.id)}
+                    >
+                      編集
+                    </button>
+                    <button
+                      className="text-red"
+                      onClick={() => handleDeleteConversation(conversation.id)}
+                    >
+                      削除
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <p className="whitespace-pre-line border-t border-background-gray-dark pt-4">
-                {conversation.body}
-              </p>
+              )}
             </li>
           ))}
         </ul>
-      )}
-
-      {isEditFormOpen && editingConversation && (
-        <>
-          <div
-            onClick={closeEditConversationModal}
-            className="fixed left-0 top-0 z-10 h-full w-full bg-background-black opacity-30"
-          ></div>
-          <ConversationEditForm
-            personId={props.personId}
-            closeConversationModal={closeEditConversationModal}
-            editingConversation={editingConversation}
-          />
-        </>
       )}
     </>
   );

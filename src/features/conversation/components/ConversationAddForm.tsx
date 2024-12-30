@@ -37,44 +37,34 @@ export const ConversationAddForm = (props: {
   };
 
   return (
-    <div className="fixed left-1/2 top-1/2 z-20 w-1/2 max-w-md -translate-x-1/2 -translate-y-1/2 rounded-md bg-white p-8">
+    <div className="mb-6 rounded-3xl border border-border-white bg-white px-5 py-6 shadow shadow-shadow">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label>
-          <span className="block pb-1 text-sm font-medium text-text-gray-dark">
-            日付*
-          </span>
-          <input
-            className=""
-            type="date"
-            defaultValue={new Date().toISOString().split("T")[0]}
-            {...register("date", { required: "日付は必須です" })}
-          />
-        </label>
+        <input
+          className="mb-2.5 font-bold"
+          type="date"
+          defaultValue={new Date().toISOString().split("T")[0]}
+          {...register("date", { required: "日付は必須です" })}
+        />
         {errors.date && (
           <p className="my-1 text-xs text-text-error opacity-80">
             {errors.date.message}
           </p>
         )}
 
-        <label>
-          <span className="mt-6 block pb-1 text-sm font-medium text-text-gray-dark">
-            本文*
-          </span>
-          <textarea
-            className="w-full rounded-md border border-solid border-background-gray-dark p-2"
-            rows={5}
-            {...register("body", { required: "本文は必須です" })}
-          />
-        </label>
+        <textarea
+          className="w-full rounded-xl border border-solid border-background-gray-dark p-2"
+          rows={5}
+          {...register("body", { required: "本文は必須です" })}
+        />
         {errors.body && (
           <p className="my-1 text-xs text-text-error opacity-80">
             {errors.body.message}
           </p>
         )}
 
-        <div className="mt-10 flex justify-center">
+        <div className="mt-2 flex justify-center">
           {loading ? (
-            <div className="flex w-48 items-center justify-center rounded-md bg-primary py-3 pr-5 text-white">
+            <div className="flex w-48 items-center justify-center rounded-full bg-primary py-3 pr-5 text-white">
               <svg
                 className="-ml-1 mr-3 h-5 w-5 animate-spin text-white"
                 xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +89,7 @@ export const ConversationAddForm = (props: {
             </div>
           ) : (
             <button
-              className="w-48 rounded-md bg-primary py-3 text-white"
+              className="w-48 rounded-full bg-primary py-3 text-white"
               type="submit"
             >
               作成
@@ -107,6 +97,15 @@ export const ConversationAddForm = (props: {
           )}
         </div>
       </form>
+      <div className="mt-2 flex justify-end">
+        <button
+          type="button"
+          onClick={() => props.closeConversationModal()}
+          className="text-sm text-gray"
+        >
+          キャンセル
+        </button>
+      </div>
     </div>
   );
 };

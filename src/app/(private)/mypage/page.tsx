@@ -6,6 +6,7 @@ const MyPage = async () => {
 
   return (
     <section>
+      <h1 className="mb-9 text-3xl font-bold">マイページ</h1>
       <MypageContent data={data} />
     </section>
   );
