@@ -18,7 +18,7 @@ export default function Layout({
   return (
     <>
       <PrivateHeader />
-      <div className="w-full max-w-4xl px-6 py-16 md:mx-auto lg:w-3/4">
+      <div className="w-full max-w-4xl px-6 py-10 md:mx-auto md:py-16 lg:w-3/4">
         {children}
       </div>
       <Footer />

@@ -13,8 +13,10 @@ const PeoplePage = async () => {
 
     return (
       <section className="">
-        <h1 className="mb-9 text-3xl font-bold">ヒトの一覧</h1>
-        <div className="mb-16 w-full">
+        <h1 className="mb-5 text-2xl font-bold md:mb-9 md:text-3xl">
+          ヒトの一覧
+        </h1>
+        <div className="mb-12 w-full md:mb-16">
           <SearchField />
         </div>
         <PeopleList people={people} />

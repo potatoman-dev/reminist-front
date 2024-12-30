@@ -32,29 +32,31 @@ export const MypageContent = (props: { data: UserInfo }) => {
 
   return (
     <>
-      <div className="rounded-3xl border border-border-white bg-white px-16 py-11 shadow shadow-shadow">
+      <div className="rounded-2xl border border-border-white bg-white px-7 py-7 shadow shadow-shadow md:rounded-3xl md:px-16 md:py-11">
         <dl className="">
           <div>
             <div className="flex justify-between">
               <dt className="font-bold text-primary">名前</dt>
-              <button
-                type="button"
-                className="rounded-full bg-primary px-3 py-1 text-sm text-white"
-                onClick={toggleEditName}
-              >
-                編集
-              </button>
+              {!isEditing && (
+                <button
+                  type="button"
+                  className="rounded-full bg-primary px-3 py-1 text-sm text-white"
+                  onClick={toggleEditName}
+                >
+                  編集
+                </button>
+              )}
             </div>
             {isEditing ? (
               <form className="flex items-center gap-4">
                 <input
-                  className="rounded-xl border border-border-input p-2"
+                  className="mt-1 rounded-xl border border-border-input p-2"
                   onChange={updateName}
                   value={name}
                 />
                 <button
                   type="submit"
-                  className="rounded-xl bg-primary px-6 py-2 text-white"
+                  className="rounded-xl bg-primary px-4 py-2 text-white md:px-6"
                   onClick={submit}
                 >
                   更新

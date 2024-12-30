@@ -99,13 +99,15 @@ export const ConversationsList = (props: {
   return (
     <>
       <div className="mb-3 flex items-baseline">
-        <h2 className="pl-5 text-2xl font-bold">会話</h2>
-        <button
-          className="ml-auto mr-5 rounded-full bg-primary px-10 py-3 text-white"
-          onClick={openConversationModal}
-        >
-          会話を追加
-        </button>
+        <h2 className="pl-4 text-xl font-bold md:pl-5 md:text-2xl">会話</h2>
+        {!isCreateFormOpen && (
+          <button
+            className="ml-auto mr-4 rounded-full bg-primary px-6 py-2 text-white md:mr-5 md:px-10 md:py-3"
+            onClick={openConversationModal}
+          >
+            会話を追加
+          </button>
+        )}
       </div>
       {isCreateFormOpen && (
         <ConversationAddForm
@@ -130,10 +132,14 @@ export const ConversationsList = (props: {
                   />
                 </>
               ) : (
-                <div className="rounded-3xl border border-border-white bg-white px-5 py-6 shadow shadow-shadow">
-                  <p className="mb-2.5 font-bold">{conversation.date}</p>
-                  <p className="whitespace-pre-line">{conversation.body}</p>
-                  <div className="mt-2.5 flex justify-end gap-4">
+                <div className="rounded-2xl border border-border-white bg-white px-4 py-5 shadow shadow-shadow md:rounded-3xl md:px-5 md:py-6">
+                  <p className="mb-1.5 font-bold md:mb-2.5">
+                    {conversation.date}
+                  </p>
+                  <p className="whitespace-pre-line text-sm md:text-base">
+                    {conversation.body}
+                  </p>
+                  <div className="mt-1.5 flex justify-end gap-4 text-sm md:mt-2.5 md:text-base">
                     <button
                       className="text-primary"
                       onClick={() => openEditConversationModal(conversation.id)}

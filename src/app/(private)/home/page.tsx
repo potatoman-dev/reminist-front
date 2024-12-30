@@ -17,8 +17,10 @@ const HomePage = async () => {
     return (
       <section>
         <div className="">
-          <h1 className="mb-9 text-3xl font-bold">ホーム</h1>
-          <div className="mb-11">
+          <h1 className="mb-5 text-2xl font-bold md:mb-9 md:text-3xl">
+            ホーム
+          </h1>
+          <div className="mb-8 md:mb-11">
             <PeopleUpcomingBrithdays people={people} />
           </div>
           <div className="">
