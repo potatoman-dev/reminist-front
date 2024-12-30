@@ -1,14 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FiChevronRight } from "react-icons/fi";
 
 import { PersonType } from "@/features/person/types";
 
 export const PeopleRecently = (props: { people: PersonType[] }) => {
   return (
     <div>
-      <h2 className="mb-3 pl-4 text-lg font-bold md:pl-5">
-        最近追加したヒトビト
-      </h2>
+      <div className="flex items-baseline justify-between">
+        <h2 className="mb-3 pl-4 text-lg font-bold md:pl-5">
+          最近追加したヒトビト
+        </h2>
+        <Link className="flex items-center gap-1 text-primary" href="/people">
+          ヒトの一覧
+          <span>
+            <FiChevronRight />
+          </span>
+        </Link>
+      </div>
       {props.people.length > 0 ? (
         <ul className="grid gap-x-6 gap-y-6 sm:grid-cols-2 sm:gap-y-10 md:grid-cols-3 lg:grid-cols-4">
           {props.people.map((person) => {
