@@ -17,9 +17,11 @@ const PersonPage = async ({ params }: { params: { id: string } }) => {
 
   return (
     <section>
-      <h1 className="mb-9 text-3xl font-bold">{person.person.name}</h1>
+      <h1 className="mb-5 text-2xl font-bold md:mb-9 md:text-3xl">
+        {person.person.name}
+      </h1>
       <PersonBasicInformation data={person.person} />
-      <div className="mx-auto mt-20 max-w-2xl">
+      <div className="mx-auto mt-10 max-w-2xl md:mt-20">
         <ConversationsList conversations={conversations} personId={params.id} />
       </div>
     </section>

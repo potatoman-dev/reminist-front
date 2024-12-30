@@ -41,7 +41,7 @@ export const PersonForm = (props: PersonFormProps) => {
     <span
       key={image}
       onClick={() => props.handleSelectImage(image)}
-      className={`h-full w-full cursor-pointer rounded-3xl border-2 px-6 py-4 ${image === props.selectedImage ? "border-primary-variant" : "border-transparent"}`}
+      className={`h-full w-full cursor-pointer rounded-2xl border-2 px-3 py-2 md:rounded-3xl md:px-6 md:py-4 ${image === props.selectedImage ? "border-primary-variant" : "border-transparent"}`}
     >
       <Image
         className="w-full"
@@ -57,17 +57,19 @@ export const PersonForm = (props: PersonFormProps) => {
     <div className="">
       <form onSubmit={handleSubmit(props.onSubmit)}>
         <div className="">
-          <div className="mb-14 flex items-start gap-20">
+          <div className="mb-8 flex items-start gap-7 md:mb-14 md:gap-20">
             <Image
-              className="mt-4 h-auto w-40"
+              className="mt-4 h-auto w-20 md:w-40"
               src={`/image/people/${props.selectedImage}.png`}
               alt="ヒトの画像"
               width={100}
               height={100}
             />
-            <div className="grid grid-cols-5 gap-1">{imageSelector}</div>
+            <div className="grid grid-cols-3 gap-1 md:grid-cols-5">
+              {imageSelector}
+            </div>
           </div>
-          <div className="rounded-3xl border border-border-white bg-white px-16 py-11 shadow shadow-shadow">
+          <div className="rounded-2xl border border-border-white bg-white px-7 py-7 shadow shadow-shadow md:rounded-3xl md:px-16 md:py-11">
             <div className="mb-5">
               <label className="flex flex-col">
                 <span className="mb-1 font-bold text-primary">名前*</span>

@@ -14,7 +14,9 @@ export const PrivateHeader = () => {
   return (
     <header className="fixed left-0 top-0 z-10 h-12 w-full border-b border-border-white bg-white px-2 md:h-16 md:px-6 lg:px-20">
       <div className="flex h-full w-full items-center px-2 md:px-4">
-        <Logo />
+        <Link href="/home">
+          <Logo />
+        </Link>
         <ul className="ml-14 hidden gap-5 md:flex">
           <Links />
         </ul>
