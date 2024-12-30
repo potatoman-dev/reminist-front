@@ -6,7 +6,6 @@ import { updateUserName } from "@/features/user/api/updateUserName";
 import { UserInfo } from "@/features/user/types";
 import refetchForServer from "@/libs/api/refetchForServer";
 
-
 export const MypageContent = (props: { data: UserInfo }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [name, setName] = useState(props.data.name);
