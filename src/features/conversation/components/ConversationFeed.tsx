@@ -40,11 +40,15 @@ export const ConversationFeed = () => {
               key={item.id}
               className="rounded-2xl border border-border-white bg-white px-4 py-4 shadow shadow-shadow md:rounded-3xl md:px-5 md:py-6"
             >
-              <p className="mb-1.5 text-sm font-bold md:mb-2.5">{item.date}</p>
-              <p className="whitespace-pre-line text-sm">{item.body}</p>
+              <p className="mb-1.5 text-sm font-bold md:mb-2.5 md:text-base">
+                {item.date}
+              </p>
+              <p className="whitespace-pre-line text-sm md:text-base">
+                {item.body}
+              </p>
               <div className="flex justify-end">
                 <Link
-                  className="mt-1.5 text-sm text-primary md:mt-2.5"
+                  className="mt-1.5 text-sm text-primary md:mt-2.5 md:text-base"
                   href={`/people/${item.personId}`}
                 >
                   {item.personName}
