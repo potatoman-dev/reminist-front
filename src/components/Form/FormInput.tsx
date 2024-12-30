@@ -7,8 +7,8 @@ export const FormInput = (props: {
   errors: FieldError | undefined;
 }) => {
   return (
-    <div>
-      <label className="w-full [&_input]:w-full [&_input]:rounded-md [&_input]:border-[1px] [&_input]:border-background-gray-dark [&_input]:bg-background-gray-normal [&_input]:p-1.5 [&_input]:text-text [&_input]:placeholder:opacity-50">
+    <div className="rounded-xl border border-border-gray px-3 py-2">
+      <label className="w-full [&_input]:w-full [&_input]:bg-transparent [&_input]:p-1.5 [&_input]:text-text [&_input]:placeholder:text-text-gray-normal">
         <span className="inline-block pb-1 text-sm font-medium text-text-gray-dark">
           {props.label}
         </span>

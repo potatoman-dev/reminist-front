@@ -1,7 +1,7 @@
 import { getAuthTokensClient } from "@/features/user/api/getAuthTokensClient";
 import client from "@/libs/api/client";
 
-export const deletePerson = async (id: number) => {
+export const deletePerson = async (id: string) => {
   const { accessToken, clientToken, uid } = getAuthTokensClient();
 
   try {

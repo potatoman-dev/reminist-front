@@ -88,7 +88,7 @@ const SignInPage = () => {
       </form>
       <div className="mt-4 text-center">
         <Link
-          className="text-sm text-text-gray-light underline underline-offset-2 md:text-base"
+          className="text-sm text-text-gray-dark underline underline-offset-2 md:text-base"
           href="/signup"
         >
           新規登録はこちら
