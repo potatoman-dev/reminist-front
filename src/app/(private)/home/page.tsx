@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 
 import { ConversationFeed } from "@/features/conversation/components/ConversationFeed";
+import { getNewPeople } from "@/features/person/api/getNewPeople";
 import { getUpcomingBirthdays } from "@/features/person/api/getUpcomingBirthdays";
+import { PeopleRecently } from "@/features/person/components/PeopleRecently";
 import { PeopleUpcomingBrithdays } from "@/features/person/components/PeopleUpcomingBrithdays";
 import { getAuthTokensServer } from "@/features/user/api/getAuthTokensServer";
 import { getCurrentUser } from "@/features/user/api/getCurrentUser";
@@ -11,8 +13,15 @@ const HomePage = async () => {
 
   const { accessToken, clientToken, uid } = getAuthTokensServer();
   try {
-    const data = await getUpcomingBirthdays(accessToken, clientToken, uid);
-    const people = data.people;
+    const upcomingBirthdayData = await getUpcomingBirthdays(
+      accessToken,
+      clientToken,
+      uid
+    );
+    const upcomingBirthdaysPeople = upcomingBirthdayData.people;
+
+    const newPeopleData = await getNewPeople(accessToken, clientToken, uid);
+    const newPeople = newPeopleData.people;
 
     return (
       <section>
@@ -21,9 +30,12 @@ const HomePage = async () => {
             ホーム
           </h1>
           <div className="mb-8 md:mb-11">
-            <PeopleUpcomingBrithdays people={people} />
+            <PeopleUpcomingBrithdays people={upcomingBirthdaysPeople} />
           </div>
-          <div className="">
+          <div className="mb-8 md:mb-11">
+            <PeopleRecently people={newPeople} />
+          </div>
+          <div>
             <ConversationFeed />
           </div>
         </div>
