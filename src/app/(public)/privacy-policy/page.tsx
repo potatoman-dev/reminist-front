@@ -1,9 +1,15 @@
 const PrivacyPolicyPage = () => {
   return (
-    <div>
-      <h1>Privacy Policy</h1>
-      <p>This is the privacy policy</p>
-    </div>
+    <section>
+      <div className="w-full max-w-4xl px-6 py-10 md:mx-auto md:py-16 lg:w-3/4">
+        <h1 className="mb-5 text-2xl font-bold md:mb-9 md:text-3xl">
+          プライバシーポリシー
+        </h1>
+        <div>
+          <p>後ほど記載</p>
+        </div>
+      </div>
+    </section>
   );
 };
 

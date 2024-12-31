@@ -30,9 +30,7 @@ export const PeopleUpcomingBrithdays = (props: { people: PersonType[] }) => {
               </li>
             ))
           ) : (
-            <p className="text-sm text-text-gray-dark">
-              近日誕生日のヒトはいません
-            </p>
+            <p className="text-sm text-white">近日誕生日のヒトはいません</p>
           )}
         </ul>
       </div>

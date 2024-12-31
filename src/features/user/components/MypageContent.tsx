@@ -48,7 +48,7 @@ export const MypageContent = (props: { data: UserInfo }) => {
               )}
             </div>
             {isEditing ? (
-              <form className="flex items-center gap-4">
+              <form className="flex items-center gap-2 md:gap-4">
                 <input
                   className="mt-1 rounded-xl border border-border-input p-2"
                   onChange={updateName}
@@ -56,7 +56,7 @@ export const MypageContent = (props: { data: UserInfo }) => {
                 />
                 <button
                   type="submit"
-                  className="rounded-xl bg-primary px-4 py-2 text-white md:px-6"
+                  className="shrink-0 rounded-xl bg-primary px-4 py-2 text-white md:px-6"
                   onClick={submit}
                 >
                   更新

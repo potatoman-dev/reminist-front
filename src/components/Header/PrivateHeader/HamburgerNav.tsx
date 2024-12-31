@@ -48,8 +48,15 @@ export const HamburgerNav = (props: { name: string }) => {
             <Profile handleClose={handleClose} />
           </div>
           <div className="mt-auto flex flex-col items-end gap-2 [&_a]:w-fit [&_a]:text-sm [&_a]:text-text-gray-light">
-            <Link href="/terms-of-use">利用規約</Link>
-            <Link href="/privacy-policy">プライバシーポリシー</Link>
+            <Link href="/terms-of-use" target="_blank">
+              利用規約
+            </Link>
+            <Link href="/privacy-policy" target="_blank">
+              プライバシーポリシー
+            </Link>
+            <Link href="/contact" target="_blank">
+              お問い合わせ
+            </Link>
           </div>
         </div>
       </div>
