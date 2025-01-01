@@ -20,7 +20,7 @@ export const ProfileModal = (props: { name: string }) => {
         onClick={handleModalOpen}
         className="cursor-pointer rounded-full bg-black px-5 py-1.5 text-white md:max-w-32 lg:max-w-48"
       >
-        <span className="inline-block truncate">{props.name}</span>
+        <span className="inline-block w-full truncate">{props.name}</span>
       </button>
       {isModalOpen ? (
         <>
